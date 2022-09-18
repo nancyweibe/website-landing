@@ -1,0 +1,9 @@
+@import "../base/variables.scss";
+
+.textPrimary {
+  font-size:  0.875rem;
+  font-weight: 600;
+  color: $primary;
+  letter-spacing: 0.03125rem;
+  line-height: 1.2;
+}
