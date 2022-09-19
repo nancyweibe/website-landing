@@ -1,0 +1,78 @@
+@import "../../styles/base/variables.scss";
+
+.root {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+
+  h1 {
+    font-size: 7.5rem;
+    color: $white;
+    user-select: none;
+    line-height: 0.9;
+  }
+
+  @include media-breakpoint-down(md) {
+  }
+}
+
+.markets {
+  margin-top: 3rem;
+
+  > * {
+    margin-right: 1.2rem;
+  }
+}
+
+.illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.img1 {
+  width: 520px;
+  height: auto;
+  margin-right: -140px;
+  margin-bottom: -140px;
+  position: relative;
+  animation: float1 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+.img2 {
+  width: 355px;
+  height: auto;
+  animation: float2 4s ease-in-out infinite;
+}
+
+.col1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@keyframes float1 {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-30px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(30px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}

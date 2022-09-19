@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Mousewheel } from 'swiper'
 import AnimatedBg from "../components/AnimatedBg";
+import Hero from "../sections/Hero";
 
 export default function Home() {
 
@@ -22,17 +23,6 @@ export default function Home() {
       speed: 1000,
     }
   ))
-
-  const checkScroll = (evt) => {
-    const slide = evt.slides[evt.activeIndex]
-
-    console.log(slide)
-
-    // scrollTop = slide.scrollTop(); 
-    // if (scrollTop > 0 && (scrollTop + slide.height()) < slide[0].scrollHeight) {
-    //     evt.stopPropagation();
-    // }
-  };
 
   const allowScroll = (swiper) => {
     var activeIndex = swiper.activeIndex;
@@ -80,7 +70,7 @@ export default function Home() {
       <>
         <Swiper onSwiper={setSwiper} {...options}>
           <SwiperSlide>
-            <section>1</section>
+            <Hero />
           </SwiperSlide>
           <SwiperSlide className="scroll">
             <div>
