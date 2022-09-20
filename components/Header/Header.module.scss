@@ -1,13 +1,14 @@
 @import "../../styles/base/variables.scss";
 
 .root {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba($white, 0.15);
+  z-index: 99;
 
   @include media-breakpoint-down(md) {
   }

@@ -4,10 +4,17 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Mousewheel } from 'swiper'
 import AnimatedBg from "../components/AnimatedBg";
 import Hero from "../sections/Hero";
+import Features from "../sections/Features";
+import Join from "../sections/Join";
 
 export default function Home() {
 
   const [swiper, setSwiper] = useState(null)
+
+  useEffect(() => {
+    const Splitting = require('Splitting');
+    Splitting({ by: "chars" });
+  }, [])
 
   useEffect(() => {
     if (swiper) {
@@ -70,127 +77,19 @@ export default function Home() {
       <>
         <Swiper onSwiper={setSwiper} {...options}>
           <SwiperSlide>
-            <Hero />
+            {({ isActive }) => (
+              <Hero isActive={isActive} />
+            )}
           </SwiperSlide>
           <SwiperSlide className="scroll">
-            <div>
-              <h4>Scroll Container</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
-                ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
-                dolor lectus eu libero. Vestibulum venenatis eget turpis sed
-                faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
-                elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
-                tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
-                Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
-                hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
-                tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
-                nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
-                sodales posuere eget non est. Fusce convallis vestibulum dolor non
-                volutpat. Vivamus vestibulum quam ut ultricies pretium.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
-                ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
-                dolor lectus eu libero. Vestibulum venenatis eget turpis sed
-                faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
-                elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
-                tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
-                Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
-                hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
-                tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
-                nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
-                sodales posuere eget non est. Fusce convallis vestibulum dolor non
-                volutpat. Vivamus vestibulum quam ut ultricies pretium.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
-                ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
-                dolor lectus eu libero. Vestibulum venenatis eget turpis sed
-                faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
-                elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
-                tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
-                Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
-                hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
-                tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
-                nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
-                sodales posuere eget non est. Fusce convallis vestibulum dolor non
-                volutpat. Vivamus vestibulum quam ut ultricies pretium.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
-                ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
-                dolor lectus eu libero. Vestibulum venenatis eget turpis sed
-                faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
-                elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
-                tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
-                Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
-                hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
-                tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
-                nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
-                sodales posuere eget non est. Fusce convallis vestibulum dolor non
-                volutpat. Vivamus vestibulum quam ut ultricies pretium.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
-                ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
-                dolor lectus eu libero. Vestibulum venenatis eget turpis sed
-                faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
-                elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
-                tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
-                Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
-                hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
-                tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
-                nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
-                sodales posuere eget non est. Fusce convallis vestibulum dolor non
-                volutpat. Vivamus vestibulum quam ut ultricies pretium.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
-                ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
-                dolor lectus eu libero. Vestibulum venenatis eget turpis sed
-                faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
-                elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
-                tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
-                Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
-                hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
-                tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
-                nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
-                sodales posuere eget non est. Fusce convallis vestibulum dolor non
-                volutpat. Vivamus vestibulum quam ut ultricies pretium.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
-                ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
-                dolor lectus eu libero. Vestibulum venenatis eget turpis sed
-                faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
-                elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
-                tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
-                Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
-                hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
-                tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
-                nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
-                sodales posuere eget non est. Fusce convallis vestibulum dolor non
-                volutpat. Vivamus vestibulum quam ut ultricies pretium.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus,
-                ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet
-                dolor lectus eu libero. Vestibulum venenatis eget turpis sed
-                faucibus. Maecenas in ullamcorper orci, eu ullamcorper sem. Etiam
-                elit ante, luctus non ante sit amet, sodales vulputate odio. Aenean
-                tristique nisl tellus, sit amet fringilla nisl volutpat cursus.
-                Quisque dignissim lectus ac nunc consectetur mattis. Proin vel
-                hendrerit ipsum, et lobortis dolor. Vestibulum convallis, nibh et
-                tincidunt tristique, nisl risus facilisis lectus, ut interdum orci
-                nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum at elit
-                sodales posuere eget non est. Fusce convallis vestibulum dolor non
-                volutpat. Vivamus vestibulum quam ut ultricies pretium.
-              </p>
-            </div>
+            {({ isActive }) => (
+              <Features isActive={isActive} />
+            )}
           </SwiperSlide>
           <SwiperSlide>
-            <section>3</section>
+            {({ isActive }) => (
+              <Join isActive={isActive} />
+            )}
           </SwiperSlide>
         </Swiper>
       </>
