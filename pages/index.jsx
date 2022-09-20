@@ -12,7 +12,7 @@ export default function Home() {
   const [swiper, setSwiper] = useState(null)
 
   useEffect(() => {
-    const Splitting = require('Splitting');
+    const Splitting = require('splitting');
     Splitting({ by: "chars" });
   }, [])
 
