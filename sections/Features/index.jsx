@@ -9,6 +9,7 @@ const Features = ({ isActive }) => {
   const [play2, setPlay2] = useState(false)
 
   useEffect(() => {
+    console.log(isActive)
     if (isActive) {
       setTimeout(() => {
         setPlay1(true)

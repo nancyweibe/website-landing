@@ -2,13 +2,12 @@ import { useMemo, useState, useEffect } from "react"
 import Head from 'next/head'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Mousewheel } from 'swiper'
-import Hero from "../sections/Hero";
-import Features from "../sections/Features";
+import HeroCreators from "../sections/HeroCreators";
 import Join from "../sections/Join";
 import VisibilitySensor from '../utils/react-visibility-sensor'
 import { allowScroll } from "../utils"
 
-export default function Home() {
+export default function Creators() {
 
   const [swiper, setSwiper] = useState(null)
   const [w, setW] = useState(null)
@@ -40,7 +39,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Content Creators</title>
         <meta name="description" content="Home" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -50,16 +49,7 @@ export default function Home() {
             {({ isActive }) => (
               <VisibilitySensor minTopValue={100} partialVisibility={true}>
                 {({ isVisible }) =>
-                  <Hero isActive={w?.innerWidth < 991 ? isVisible : isActive} />
-                }
-              </VisibilitySensor>
-            )}
-          </SwiperSlide>
-          <SwiperSlide>
-            {({ isActive }) => (
-              <VisibilitySensor minTopValue={100} partialVisibility={true}>
-                {({ isVisible }) =>
-                  <Features isActive={w?.innerWidth < 991 ? isVisible : isActive} />
+                  <HeroCreators isActive={w?.innerWidth < 991 ? isVisible : isActive} />
                 }
               </VisibilitySensor>
             )}

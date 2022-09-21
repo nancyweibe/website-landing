@@ -4,6 +4,9 @@
   position: relative;
   min-height: 100vh;
   width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 
   h1 {
     font-size: 7.5rem;
@@ -12,7 +15,26 @@
     line-height: 0.9;
   }
 
+  @include media-breakpoint-down(xxl) {
+    h1 {
+      font-size: 5.625rem;
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    height: auto;
+    padding-bottom: 50px;
+
+    h1 {
+      text-align: center;
+    }
+  }
+
   @include media-breakpoint-down(md) {
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+    }
   }
 }
 
@@ -23,6 +45,31 @@
   > * {
     margin-right: 1.2rem;
   }
+
+  @include media-breakpoint-down(lg) {
+
+    justify-content: center;
+    
+    > * {
+      margin: 0 0.5rem;
+    }
+
+
+    button {
+      width: 205px;
+      justify-content: center;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-top: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+
+    > * {
+      margin: 0.5rem 0;
+    }
+  }
 }
 
 .illustration {
@@ -30,6 +77,21 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  width: 100%;
+
+  @include media-breakpoint-down(lg) {
+    min-height: 0;
+    width: 400px;
+    margin: 100px auto;
+    margin-top: 130px;
+  }
+
+  @include media-breakpoint-down(md) {
+    min-height: 0;
+    width: 300px;
+    margin: 100px auto;
+    margin-top: 130px;
+  }
 }
 
 .img1 {
@@ -38,17 +100,13 @@
   position: relative;
   z-index: 1;
 
-  img {
-    width: 520px;
-    height: auto;
+  > span {
     animation: float1 4s ease-in-out infinite;
   }
 }
 
 .img2 {
-  img {
-    width: 355px;
-    height: auto;
+  > span {
     animation: float2 4s ease-in-out infinite;
   }
 }
@@ -61,6 +119,14 @@
 
 .heading {
   height: 325px;
+
+  @include media-breakpoint-down(lg) {
+    height: 160px;
+  }
+
+  @include media-breakpoint-down(md) {
+    height: 80px;
+  }
 }
 
 @keyframes float1 {

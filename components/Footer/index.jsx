@@ -15,22 +15,22 @@ const Header = () => {
     <div className={styles.root}>
       <Container>
         <Row>
-          <Col className="d-flex align-items-center" md={6}>
-            <div className={styles.inner}>
-              <div className={styles.navigation}>
-                <ul>
-                  {links.map((link, i) => (
-                    <li key={`l-${i}`}><Link href={link.link}>{link.name}</Link></li>
-                  ))}
-                </ul>
-              </div>
+          <Col className="d-flex align-items-center order-2 order-md-1" md={7}>
+            <div className={styles.navigation}>
+              <ul>
+                {links.map((link, i) => (
+                  <li key={`l-${i}`}><Link href={link.link}>{link.name}</Link></li>
+                ))}
+              </ul>
             </div>
           </Col>
-          <Col className="d-flex align-items-center" md={6}>
+          <Col className="d-flex align-items-center order-1 order-md-2" md={5}>
             <div className={styles.socials}>
               <span>Our Social Media:</span>
-              <a href="#" target="blank"><IconFacebook /></a>
-              <a href="#" target="blank"><IconTwitter /></a>
+              <div className={styles.socialInner}>
+                <a href="#" target="blank"><IconFacebook /></a>
+                <a href="#" target="blank"><IconTwitter /></a>
+              </div>
             </div>
           </Col>
         </Row>

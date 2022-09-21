@@ -7,3 +7,18 @@
   letter-spacing: 0.03125rem;
   line-height: 1.2;
 }
+
+.textRegular {
+  font-size: 1.5rem;
+  color: $white;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .textRegular {
+    font-size: 1.25rem;
+  }
+}
