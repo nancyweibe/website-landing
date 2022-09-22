@@ -17,6 +17,12 @@
   }
 }
 
+.title2 {
+  font-size: 4rem;
+  color: $white;
+  line-height: 0.9;
+}
+
 @include media-breakpoint-down(md) {
   .textRegular {
     font-size: 1.25rem;

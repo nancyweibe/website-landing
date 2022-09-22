@@ -7,6 +7,12 @@
   height: 100vh;
   display: flex;
   align-items: center;
+  overflow-y: auto;
+
+  &::after {
+    content: "";
+    height: 500vh;
+  }
 
   h1 {
     font-size: 7rem;
@@ -29,5 +35,273 @@
     h1 {
       font-size: 2.8125rem;
     }
+  }
+}
+
+.titleContainer {
+  position: relative;
+  transition: opacity $transition ease;
+
+  &:global(.s1){
+    opacity: 0;
+  }
+}
+
+.likeAnimation {
+  position: absolute;
+  bottom: -140px;
+  right: 20px;
+  width: 237px;
+  height: 237px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all $transition * 2 cubic-bezier(0.51, 0.92, 0.24, 1.15);
+
+  &:global(.active) {
+    transform: scale(1);
+  }
+
+  @include media-breakpoint-down(lg) {
+    width: 160px;
+    height: 160px;
+    bottom: -70px;
+    right: 40px;
+  }
+
+  @include media-breakpoint-down(md) {
+    width: 80px;
+    height: 80px;
+    bottom: 90px;
+    right: 20px;
+  }
+}
+
+.likeBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  animation: spin 40s linear infinite;
+}
+
+.likeVideo {
+  position: relative;
+  z-index: 2;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  overflow: hidden;
+  transform: rotate(15deg);
+
+  @include media-breakpoint-down(lg) {
+    width: 90px;
+    height: 90px;
+  }
+
+  @include media-breakpoint-down(md) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.phone {
+  position: absolute;
+  width: 331px;
+  height: 671px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: auto;
+  z-index: 2;
+  top: auto;
+  left: 50%;
+  bottom: 0;
+  transform: translateY(100%) translateX(-50%);
+
+  &:global(.s1) {
+    animation: phone1 5s ease;
+    animation-fill-mode: forwards;
+  }
+
+  &:global(.s2) {
+    animation: phone2 5s ease;
+    animation-fill-mode: forwards;
+  }
+}
+
+.phoneBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.videoContainer {
+  width: 298px;
+  height: 645px;
+  border-radius: 30px;
+  overflow: hidden;
+
+  video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+.blocks {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: $header-height;
+}
+
+.blocksInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: opacity $transition ease;
+
+  &:global(.s0){
+    opacity: 0;
+  }
+}
+
+.blockShape {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 100%;
+  height: 550px;
+  pointer-events: none;
+}
+
+.blockHeading {
+  user-select: none;
+}
+
+.blockParagraph1 {
+  max-width: 400px;
+  height: 180px;
+  position: relative;
+
+  > p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity $transition * 2 ease;
+  }
+
+  &:global(.play) {
+    > p {
+      &:first-child {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:global(.play2) {
+    > p {
+      &:first-child {
+        opacity: 0;
+      }
+      &:last-child {
+        opacity: 1;
+        transition-delay: $transition * 4;
+      }
+    }
+  }
+}
+
+.phoneVideo1,
+.phoneVideo3,
+.phoneVideo4 {
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.phoneVideo2 {
+  right: 0 !important;
+  left: auto !important;
+  transform: translateY(-50%) translateX(0) !important;
+}
+
+.phoneVideo1,
+.phoneVideo2,
+.phoneVideo3,
+.phoneVideo4 {
+  opacity: 0;
+  transition: opacity $transition ease;
+
+  &:global(.active) {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes phone1 {
+  0% {
+    top: auto;
+    left: 50%;
+    bottom: 0;
+    transform: translateY(100%) translateX(-50%);
+  }
+  40% {
+    left: 50%;
+    bottom: 0;
+    transform: translateY(40%) translateX(-50%);
+  }
+  70% {
+    left: 50%;
+    bottom: 50%;
+    transform: translateY(50%) translateX(-50%);
+  }
+  100% {
+    left: calc((100vw - 1000px) / 2);
+    bottom: 50%;
+    transform: translateY(50%) translateX(0) rotate(-15deg);
+  }
+}
+
+@keyframes phone2 {
+  0% {
+    left: calc((100vw - 1000px) / 2);
+    bottom: 50%;
+    transform: translateY(50%) translateX(0) rotate(-15deg);
+  }
+  40% {
+    left: 50%;
+    bottom: 0;
+    transform: translateY(40%) translateX(-50%);
+  }
+  70% {
+    left: 50%;
+    bottom: 50%;
+    transform: translateY(50%) translateX(-50%);
+  }
+  100% {
+    left: calc((100vw - 1000px) / 2);
+    bottom: 50%;
+    transform: translateY(50%) translateX(0) rotate(-15deg);
   }
 }

@@ -279,6 +279,15 @@ $entry-offset: 50%;
     &.d3.splitting .char {
       animation-delay: calc(300ms + 50ms * (var(--char-index)));
     }
+    &.d4.splitting .char {
+      animation-delay: calc(400ms + 50ms * (var(--char-index)));
+    }
+    &.d5.splitting .char {
+      animation-delay: calc(500ms + 50ms * (var(--char-index)));
+    }
+    &.d6.splitting .char {
+      animation-delay: calc(600ms + 50ms * (var(--char-index)));
+    }
   }
 }
 

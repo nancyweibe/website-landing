@@ -1,0 +1,32 @@
+@import "../../styles/base/variables.scss";
+
+.root {
+  width: 100%;
+  height: 100%;
+
+  rect {
+    stroke-dasharray: 3500;
+    stroke-dashoffset: 3500;
+    opacity: 0;
+    transition: opacity $transition ease;
+  }
+
+  &:global(.play) {
+    rect {
+      opacity: 1;
+      animation: stroke 1s linear;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+  }
+}
+
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+

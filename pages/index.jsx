@@ -12,6 +12,7 @@ export default function Home() {
 
   const [swiper, setSwiper] = useState(null)
   const [w, setW] = useState(null)
+  const [canSlide, setCanSlide] = useState(true)
 
   useEffect(() => {
     const Splitting = require('splitting');
@@ -19,10 +20,17 @@ export default function Home() {
     setW(window)
   }, [])
 
-  useEffect(() => {
+  useEffect(()=>{
     if (swiper) {
-      swiper.on('slideChangeTransitionEnd', allowScroll);
+      canSlide ? swiper.mousewheel.enable() : swiper.mousewheel.disable();
+      swiper.allowTouchMove = canSlide;
     }
+  }, [canSlide])
+
+  useEffect(() => {
+    // if (swiper) {
+    //   swiper.on('slideChangeTransitionEnd', allowScroll);
+    // }
     if (swiper && window.innerWidth < 991 && swiper.__swiper__) swiper.destroy();
   }, [swiper])
 
@@ -34,8 +42,6 @@ export default function Home() {
       speed: 1000,
     }
   ))
-
-
 
   return (
     <>
@@ -59,7 +65,7 @@ export default function Home() {
             {({ isActive }) => (
               <VisibilitySensor minTopValue={100} partialVisibility={true}>
                 {({ isVisible }) =>
-                  <Features isActive={w?.innerWidth < 991 ? isVisible : isActive} />
+                  <Features setCanSlide={setCanSlide} isActive={w?.innerWidth < 991 ? isVisible : isActive} />
                 }
               </VisibilitySensor>
             )}
