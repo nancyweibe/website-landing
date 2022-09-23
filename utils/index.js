@@ -18,7 +18,7 @@ export const allowScroll = (swiper) => {
         activeSlide.removeEventListener("touchmove", findScroll);
       } else if (
         (!scrollUp || e.type === "touchmove") &&
-        activeSlide.scrollTop >= diff
+        activeSlide.scrollTop >= diff - 5
       ) {
         swiper.mousewheel.enable();
         swiper.allowTouchMove = true;
