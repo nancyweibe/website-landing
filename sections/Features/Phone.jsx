@@ -3,7 +3,7 @@ import styles from "./Features.module.scss"
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
 
-const Phone = ({ step }) => {
+const Phone = ({ step, isActive }) => {
 
   const [play3, setPlay3] = useState(false)
   const [play1, setPlay1] = useState(false)
@@ -19,10 +19,25 @@ const Phone = ({ step }) => {
         videoRef1.current.play()
       }, 3500)
     }
+    if (step == 2) {
+      setTimeout(() => {
+        videoRef2.current.play()
+      }, 2000)
+    }
+    if (step == 3) {
+      setTimeout(() => {
+        videoRef3.current.play()
+      }, 2000)
+    }
+    if (step == 4 || step == 5) {
+      setTimeout(() => {
+        videoRef4.current.play()
+      }, 2000)
+    }
   }, [step])
 
   return (
-    <div className={`${styles.phone} s${step}`}>
+    <div className={`${styles.phone} s${step} ${isActive ? 'active' : ''}`}>
       <div className={`${styles.phoneBg}`}>
         <Image
           src="/images/phone.png"
@@ -45,8 +60,8 @@ const Phone = ({ step }) => {
         <video
           ref={videoRef2}
           className={`${styles.phoneVideo2} ${step == 2 ? 'active' : ''}`}
-          width="387"
-          height="672"
+          width="400"
+          height="695"
           muted="muted"
         >
           <source src="/animations/screen-2.mp4" type="video/mp4" />
@@ -64,7 +79,7 @@ const Phone = ({ step }) => {
         </video>
         <video
           ref={videoRef4}
-          className={`${styles.phoneVideo4} ${step == 4 ? 'active' : ''}`}
+          className={`${styles.phoneVideo4} ${(step == 4 || step == 5) ? 'active' : ''}`}
           width="298"
           height="645"
           muted="muted"
