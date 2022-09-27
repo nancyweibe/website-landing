@@ -294,16 +294,11 @@
 }
 
 .phoneVideo1,
+.phoneVideo2,
 .phoneVideo3,
 .phoneVideo4 {
   border-radius: 30px;
   overflow: hidden;
-}
-
-.phoneVideo2 {
-  right: 0 !important;
-  left: auto !important;
-  transform: translateY(-50%) translateX(0) !important;
 }
 
 .phoneVideo1,

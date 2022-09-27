@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Mousewheel } from 'swiper'
 import HeroCreators from "../sections/HeroCreators";
+import CreatorsFeatures from "../sections/CreatorsFeatures";
 import Join from "../sections/Join";
 import VisibilitySensor from '../utils/react-visibility-sensor'
 import { allowScroll } from "../utils"
@@ -34,8 +35,6 @@ export default function Creators() {
     }
   ))
 
-
-
   return (
     <>
       <Head>
@@ -50,6 +49,15 @@ export default function Creators() {
               <VisibilitySensor minTopValue={100} partialVisibility={true}>
                 {({ isVisible }) =>
                   <HeroCreators isActive={w?.innerWidth < 991 ? isVisible : isActive} />
+                }
+              </VisibilitySensor>
+            )}
+          </SwiperSlide>
+          <SwiperSlide className="scroll">
+            {({ isActive }) => (
+              <VisibilitySensor minTopValue={100} partialVisibility={true}>
+                {({ isVisible }) =>
+                  <CreatorsFeatures isActive={w?.innerWidth < 991 ? isVisible : isActive} />
                 }
               </VisibilitySensor>
             )}

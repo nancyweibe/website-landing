@@ -1,5 +1,13 @@
 @import "../base/variables.scss";
 
+.title {
+  font-size: 7.5rem;
+  font-weight: 700;
+  color: $white;
+  line-height: 0.9;
+  font-family: $font-family-secondary;
+} 
+
 .textPrimary {
   font-size:  0.875rem;
   font-weight: 600;
@@ -23,8 +31,20 @@
   line-height: 0.9;
 }
 
+.title3 {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: $font-family-base;
+  color: $white;
+  line-height: 0.9;
+}
+
 @include media-breakpoint-down(md) {
   .textRegular {
     font-size: 1.25rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
   }
 }

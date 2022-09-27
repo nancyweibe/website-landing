@@ -60,8 +60,8 @@ const Phone = ({ step, isActive }) => {
         <video
           ref={videoRef2}
           className={`${styles.phoneVideo2} ${step == 2 ? 'active' : ''}`}
-          width="400"
-          height="695"
+          width="298"
+          height="645"
           muted="muted"
         >
           <source src="/animations/screen-2.mp4" type="video/mp4" />
