@@ -34,10 +34,10 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
       }, 1000)
 
       setTimeout(() => {
-        videoRef1.current.play()
-        videoRef2.current.play()
-        videoRef3.current.play()
-        videoRef4.current.play()
+        videoRef1?.current?.play()
+        videoRef2?.current?.play()
+        videoRef3?.current?.play()
+        videoRef4?.current?.play()
       }, 2000)
 
     }

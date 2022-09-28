@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import styles from "./Features.module.scss"
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
@@ -6,6 +6,9 @@ import Phone from "./Phone";
 import Shape from "../../components/Shape";
 import ts from "../../styles/global/typography.module.scss"
 import { IconAllow } from "../../components/Icon"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Mousewheel } from 'swiper'
+import Progress from "./Progress";
 
 const Features = ({ isActive, setCanSlide }) => {
 
@@ -22,12 +25,12 @@ const Features = ({ isActive, setCanSlide }) => {
   const lastPos = useRef(0)
   const sStep = useRef(0)
   const del = useRef(0)
+  const [swiper, setSwiper] = useState(null)
+  const [progressPlay, setProgressPlay] = useState(false)
 
   useEffect(() => {
     if (isActive) {
       setCanSlide(false)
-
-      ref.current.addEventListener("scroll", onScroll)
 
       setTimeout(() => {
         setPlay1(true)
@@ -43,8 +46,35 @@ const Features = ({ isActive, setCanSlide }) => {
       }, 1000)
     }
 
-    return () => ref?.current && ref.current.removeEventListener("scroll", onScroll)
   }, [isActive])
+
+  useEffect(() => {
+    if (swiper) {
+      swiper.on('slideChangeTransitionStart', onSlideChange)
+    }
+  }, [swiper])
+
+  const onSlideChange = (e) => {
+    if (e.activeIndex == 0 && e.previousIndex == 1) {
+      setStep(0)
+      setCanSlide(true)
+      return
+    }
+    if (e.activeIndex == 6 && e.previousIndex == 5) {
+      setCanSlide(true)
+      return
+    }
+
+    if (e.activeIndex != 6 && e.activeIndex != 1 && !(e.activeIndex == 5 && e.previousIndex == 6)) {
+      e.mousewheel.disable()
+      setProgressPlay(true)
+      setStep(e.activeIndex - 1)
+      setTimeout(() => {
+        e.mousewheel.enable()
+        setProgressPlay(false)
+      }, 7000)
+    }
+  }
 
   useEffect(() => {
 
@@ -148,26 +178,41 @@ const Features = ({ isActive, setCanSlide }) => {
     }
   }, [step])
 
-  const onScroll = (e) => {
-    const scrollTop = ref.current.scrollTop;
-    const delta = scrollTop - lastPos.current
-    lastPos.current = ref.current.scrollTop
-    del.current = del.current + delta
-
-    if (del.current > window.innerHeight / 2) {
-      sStep.current = sStep.current < 5 ? sStep.current + 1 : sStep.current
-      del.current = 0
+  const options = useMemo(() => (
+    {
+      direction: 'vertical',
+      modules: [Navigation, Pagination, Mousewheel],
+      mousewheel: true,
+      speed: 1000,
     }
-    if (del.current < -window.innerHeight / 2) {
-      sStep.current = sStep.current > 0 ? sStep.current - 1 : sStep.current
-      del.current = 0
-    }
-
-    setStep(sStep.current)
-  }
+  ))
 
   return (
     <section ref={ref} className={`${styles.root}`}>
+      <Progress isActive={isActive && step > 0} play={progressPlay} />
+      <Swiper className={`${styles.swiper}`} onSwiper={setSwiper} {...options}>
+        <SwiperSlide>
+          <div></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div></div>
+        </SwiperSlide>
+      </Swiper>
 
       <div className={`${styles.titleContainer} s${step}`}>
         <Container>

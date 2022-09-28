@@ -7,12 +7,6 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  overflow-y: auto;
-
-  &::after {
-    content: "";
-    height: 1000vh;
-  }
 
   h1 {
     font-size: 7rem;
@@ -593,6 +587,48 @@
       }
     }
   }
+}
+
+.progress {
+  height: 6px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+
+  &:global(.active) {
+    opacity: 1;
+    transition: opacity $transition ease;
+    transition-delay: $transition*4;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: center left;
+    background-color: rgba(255, 0, 255, 1);
+  }
+
+  &:global(.play) {
+    &::after {
+      transition: transform 7s linear;
+      transform: scaleX(1);
+    }
+  }
+}
+
+.swiper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes spin {
