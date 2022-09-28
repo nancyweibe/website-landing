@@ -668,17 +668,17 @@
     transform: translateY(50%) translateX(0) rotate(-15deg);
   }
   40% {
-    left: calc(100vw - (1500px / 2));
+    left: calc(100vw - ((100vw - 600px) / 2));
     bottom: 45%;
     transform: translateY(50%) translateX(-50%);
   }
   70% {
-    left: calc(100vw - (1500px / 2));
+    left: calc(100vw - ((100vw - 600px) / 2));
     bottom: 45%;
     transform: translateY(50%) translateX(-50%);
   }
   100% {
-    left: calc(100vw - (1500px / 2));
+    left: calc(100vw - ((100vw - 600px) / 2));
     bottom: 45%;
     transform: translateY(50%) translateX(-50%);
   }
@@ -719,12 +719,12 @@
     transform: translateY(50%) translateX(-50%);
   }
   70% {
-    left: calc(100vw - (1500px / 2));
+    left: calc(100vw - ((100vw - 600px) / 2));
     bottom: 45%;
     transform: translateY(70%) translateX(-50%) rotate(10deg);
   }
   100% {
-    left: calc(100vw - (1500px / 2));
+    left: calc(100vw - ((100vw - 600px) / 2));
     bottom: 45%;
     transform: translateY(70%) translateX(-50%) rotate(10deg);
   }
