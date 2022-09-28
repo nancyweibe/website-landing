@@ -7,6 +7,11 @@ import Features from "../sections/Features";
 import Join from "../sections/Join";
 import VisibilitySensor from '../utils/react-visibility-sensor'
 import { allowScroll } from "../utils"
+import FeatureMobileTitle from "../sections/Features/FeatureMobileTitle";
+import FeatureMobile1 from "../sections/Features/FeatureMobile1";
+import FeatureMobile2 from "../sections/Features/FeatureMobile2";
+import FeatureMobile3 from "../sections/Features/FeatureMobile3";
+import FeatureMobile4 from "../sections/Features/FeatureMobile4";
 
 export default function Home() {
 
@@ -15,12 +20,17 @@ export default function Home() {
   const [canSlide, setCanSlide] = useState(true)
 
   useEffect(() => {
-    const Splitting = require('splitting');
-    Splitting({ by: "chars" });
     setW(window)
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
+    if (w) {
+      const Splitting = require('splitting');
+      Splitting({ by: "chars" });
+    }
+  }, [w])
+
+  useEffect(() => {
     if (swiper) {
       canSlide ? swiper.mousewheel.enable() : swiper.mousewheel.disable();
       swiper.allowTouchMove = canSlide;
@@ -61,15 +71,43 @@ export default function Home() {
               </VisibilitySensor>
             )}
           </SwiperSlide>
-          <SwiperSlide>
-            {({ isActive }) => (
-              <VisibilitySensor minTopValue={100} partialVisibility={true}>
-                {({ isVisible }) =>
-                  <Features setCanSlide={setCanSlide} isActive={w?.innerWidth < 991 ? isVisible : isActive} />
-                }
-              </VisibilitySensor>
-            )}
-          </SwiperSlide>
+          {w?.innerWidth < 991 ?
+            <SwiperSlide>
+              {({ isActive }) => (
+                <>
+                  <VisibilitySensor minTopValue={100} partialVisibility={true}>
+                    {({ isVisible }) => <FeatureMobileTitle isActive={isVisible} />
+                    }
+                  </VisibilitySensor>
+                  <VisibilitySensor minTopValue={100} partialVisibility={true}>
+                    {({ isVisible }) => <FeatureMobile1 isActive={isVisible} />
+                    }
+                  </VisibilitySensor>
+                  <VisibilitySensor minTopValue={100} partialVisibility={true}>
+                    {({ isVisible }) => <FeatureMobile2 isActive={isVisible} />
+                    }
+                  </VisibilitySensor>
+                  <VisibilitySensor minTopValue={100} partialVisibility={true}>
+                    {({ isVisible }) => <FeatureMobile3 isActive={isVisible} />
+                    }
+                  </VisibilitySensor>
+                  <VisibilitySensor minTopValue={100} partialVisibility={true}>
+                    {({ isVisible }) => <FeatureMobile4 isActive={isVisible} />
+                    }
+                  </VisibilitySensor>
+                </>
+              )}
+            </SwiperSlide>
+            :
+            <SwiperSlide>
+              {({ isActive }) => (
+                <VisibilitySensor minTopValue={100} partialVisibility={true}>
+                  {({ isVisible }) => <Features setCanSlide={setCanSlide} isActive={w?.innerWidth < 991 ? isVisible : isActive} />
+                  }
+                </VisibilitySensor>
+              )}
+            </SwiperSlide>
+          }
           <SwiperSlide>
             {({ isActive }) => (
               <VisibilitySensor minTopValue={100} partialVisibility={true}>

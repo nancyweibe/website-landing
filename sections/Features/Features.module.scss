@@ -38,6 +38,86 @@
   }
 }
 
+.rootMobile1 {
+  position: relative;
+  height: auto;
+  padding: 2rem 0;
+  min-height: 0;
+  margin-top: 300px;
+  margin-bottom: 100px;
+
+  h1 {
+    font-size: 2.1875rem;
+    color: $white;
+    user-select: none;
+    line-height: 0.9;
+  }
+}
+
+.rootMobile4 {
+  position: relative;
+  height: auto;
+  padding: 2rem 0;
+  min-height: 0;
+  margin-top: -70px;
+  margin-bottom: 300px;
+
+  h1 {
+    font-size: 2.1875rem;
+    color: $white;
+    user-select: none;
+    line-height: 0.9;
+  }
+}
+
+.mobile1Inner {
+  padding: 0 3rem;
+  text-align: center;
+  padding-top: 200px;
+  margin: 0 auto;
+}
+
+.mobile4Inner {
+  padding: 0 3rem;
+  padding-bottom: 200px;
+  margin: 0 auto;
+}
+
+.rootMobile {
+  position: relative;
+  height: auto;
+  padding: 4rem 0;
+  min-height: 0;
+
+  h1 {
+    font-size: 7rem;
+    color: $white;
+    user-select: none;
+    line-height: 0.9;
+  }
+
+  @include media-breakpoint-down(lg) {
+    h1 {
+      font-size: 4.6875rem;
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    h1 {
+      font-size: 2.8125rem;
+    }
+  }
+}
+
+.titleContainerMobile {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  transition: opacity $transition * 3 ease;
+}
+
 .titleContainer {
   position: fixed;
   top: 0;
@@ -54,6 +134,11 @@
     pointer-events: none;
     transition-delay: $transition * 4;
   }
+}
+
+.paragraphInner {
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .likeAnimation {
@@ -114,6 +199,111 @@
   @include media-breakpoint-down(md) {
     width: 40px;
     height: 40px;
+  }
+}
+
+.phoneMobile {
+  position: relative;
+  width: 220px;
+  height: 446px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0;
+
+  transition: opacity $transition ease;
+
+  &:global(.active) {
+    opacity: 1;
+    transition-delay: 1000ms;
+  }
+}
+
+.phoneMobileBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.videoMobileContainer {
+  width: 200px;
+  height: 433px;
+
+  video {
+    position: absolute;
+    border-radius: 30px;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+.blockShapeMobile {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: $gutter/4;
+  width: calc(100% - $gutter/2);
+  height: 570px;
+  pointer-events: none;
+}
+
+.phoneM1 {
+  position: absolute;
+  top: -220px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: flex;
+  transform-origin: center center;
+  justify-content: center;
+  transition: all $transition * 3 ease;
+
+  &:global(.play) {
+    opacity: 1;
+    transform: rotate(-10deg) translateX(-50%);
+  }
+}
+
+.phoneM2 {
+  position: absolute;
+  top: -220px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: flex;
+  transform-origin: center center;
+  justify-content: center;
+  transition: all $transition * 3 ease;
+
+  &:global(.play) {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+.phoneM4 {
+  position: absolute;
+  bottom: -220px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: flex;
+  transform-origin: center center;
+  justify-content: center;
+  transition: all $transition * 3 ease;
+
+  &:global(.play) {
+    opacity: 1;
+    transform: translateX(-50%) rotate(10deg);
   }
 }
 
@@ -318,6 +508,12 @@
   margin: 0;
   list-style: none;
 
+  &:global(.mobile) {
+    li {
+      padding-left: 2rem;
+    }
+  }
+
   li {
     position: relative;
     padding: 0.25rem 0;
@@ -337,7 +533,7 @@
       top: 0.5rem;
       left: 0;
       transform: scale(0);
-      transition: transform $transition*5 cubic-bezier(0.51, 0.92, 0.24, 1.15);
+      transition: transform $transition * 5 cubic-bezier(0.51, 0.92, 0.24, 1.15);
     }
   }
 
@@ -362,10 +558,10 @@
 
       &:nth-child(2) {
         span {
-          transition-delay: $transition*2;
+          transition-delay: $transition * 2;
         }
         svg {
-          transition-delay: $transition*2;
+          transition-delay: $transition * 2;
         }
       }
 
