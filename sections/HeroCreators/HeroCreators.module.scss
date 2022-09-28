@@ -26,6 +26,7 @@
   @include media-breakpoint-down(lg) {
     height: auto;
     padding-bottom: 50px;
+    padding-top: 100px;
 
     h1 {
       text-align: center;
@@ -54,6 +55,11 @@
 
   &:global(.active) {
     transform: scale(1);
+  }
+
+  @include media-breakpoint-down(lg) {
+    width: 80px;
+    height: 80px;
   }
 }
 

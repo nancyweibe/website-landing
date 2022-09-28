@@ -13,6 +13,10 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
   const [play2, setPlay2] = useState(false)
   const [play4, setPlay4] = useState(false)
   const ref = useRef(null)
+  const videoRef1 = useRef(null)
+  const videoRef2 = useRef(null)
+  const videoRef3 = useRef(null)
+  const videoRef4 = useRef(null)
 
   useEffect(() => {
     if (isActive) {
@@ -29,6 +33,13 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
         setPlay4(true)
       }, 1000)
 
+      setTimeout(() => {
+        videoRef1.current.play()
+        videoRef2.current.play()
+        videoRef3.current.play()
+        videoRef4.current.play()
+      }, 2000)
+
     }
   }, [isActive])
 
@@ -36,22 +47,26 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
     <section ref={ref} className={`${styles.root}`}>
       <Container>
         <Row className="pb-5">
-          <Col className={`${styles.column1} ${play2 ? 'play' : ''}`} md={6}>
+          <Col className={`${styles.column1} ${play2 ? 'play' : ''} order-2 order-lg-1`} lg={6}>
             <div className={`${styles.blockShape}`}>
               <Shape isSquare play={play4} />
             </div>
-            <img className={`${styles.chart} entry-op-2`} src="/images/creators-tools.svg" alt="" />
+            <img className={`${styles.image} entry-op-2`} src="/images/creators-tools.svg" alt="" />
           </Col>
-          <Col md={6} className={`position-relative d-flex align-items-center ps-4 ${play4 ? 'play' : ''}`}>
+          <Col lg={6} className={`position-relative d-flex align-items-center order-1 order-lg-2 ps-4 ${play4 ? 'play' : ''}`}>
             <div>
-              <div className={`${styles.row} entry-d-1`}>
+              <div onMouseOver={() => videoRef1.current.play()} className={`${styles.row} entry-d-1`}>
                 <div className={`${styles.icon}`}>
-                  <Image
-                    src="/images/creators-icon-1.svg"
-                    alt="like bg"
-                    width={54}
-                    height={54}
-                  />
+                  <video
+                    ref={videoRef1}
+                    className={`${styles.listVideo} entry-op-4`}
+                    width="54"
+                    height="54"
+                    muted="muted"
+                  >
+                    <source src="/animations/money-bag-1.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 <div>
                   <h3 className={`${ts.title3}`}>Tools to monetize</h3>
@@ -59,14 +74,18 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
                 </div>
               </div>
 
-              <div className={`${styles.row} entry-d-2`}>
+              <div onMouseOver={() => videoRef2.current.play()} className={`${styles.row} entry-d-2`}>
                 <div className={`${styles.icon}`}>
-                  <Image
-                    src="/images/creators-icon-2.svg"
-                    alt="like bg"
-                    width={54}
-                    height={54}
-                  />
+                  <video
+                    ref={videoRef2}
+                    className={`${styles.listVideo} entry-op-4`}
+                    width="54"
+                    height="54"
+                    muted="muted"
+                  >
+                    <source src="/animations/pie-chart.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 <div>
                   <h3 className={`${ts.title3}`}>Invest in other creators</h3>
@@ -74,14 +93,18 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
                 </div>
               </div>
 
-              <div className={`${styles.row} entry-d-3`}>
+              <div onMouseOver={() => videoRef3.current.play()} className={`${styles.row} entry-d-3`}>
                 <div className={`${styles.icon}`}>
-                  <Image
-                    src="/images/creators-icon-3.svg"
-                    alt="like bg"
-                    width={54}
-                    height={54}
-                  />
+                  <video
+                    ref={videoRef3}
+                    className={`${styles.listVideo}`}
+                    width="54"
+                    height="54"
+                    muted="muted"
+                  >
+                    <source src="/animations/line-chart.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 <div>
                   <h3 className={`${ts.title3}`}>Analytics to help grow your brand</h3>
@@ -89,14 +112,18 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
                 </div>
               </div>
 
-              <div className={`${styles.row} entry-d-4`}>
+              <div onMouseOver={() => videoRef4.current.play()} className={`${styles.row} entry-d-4`}>
                 <div className={`${styles.icon}`}>
-                  <Image
-                    src="/images/creators-icon-4.svg"
-                    alt="like bg"
-                    width={54}
-                    height={54}
-                  />
+                  <video
+                    ref={videoRef4}
+                    className={`${styles.listVideo}`}
+                    width="54"
+                    height="54"
+                    muted="muted"
+                  >
+                    <source src="/animations/controls.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 <div>
                   <h3 className={`${ts.title3}`}>Tools to better engage w/ community</h3>
@@ -106,8 +133,8 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
             </div>
           </Col>
         </Row>
-        <Row className="pt-5">
-          <Col md={6} className="position-relative d-flex align-items-center">
+        <Row className="pt-0 pt-lg-5">
+          <Col lg={6} className="position-relative d-flex align-items-center">
             <div>
               <h2 className={`${ts.title} mb-4 ${play2 ? 'play' : ''}`}>
                 <div data-splitting>Build</div>
@@ -120,7 +147,7 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
               </div>
             </div>
           </Col>
-          <Col className={`${styles.column1} ${play2 ? 'play' : ''}`} md={6}>
+          <Col className={`${styles.column1} ${play2 ? 'play' : ''}`} lg={6}>
             <div className={`${styles.blockShape}`}>
               <Shape isSquare play={play4} />
             </div>
