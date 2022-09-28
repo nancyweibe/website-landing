@@ -258,11 +258,11 @@ const FaqViewer = () => {
                 <div key={`ss-${i}`}>
                   <h2 className={`${styles.faqHeading} entry-d-${i + 1}`}>{sect.title}</h2>
                   {sect?.list?.map((item, i) => (
-                    <div className={`${styles.row} entry-d-${i + 1} ${open[i] && item.answer ? "active" : ""}`} key={`ai-${i}`}>
-                      <div className={`${styles.header}`} onClick={() => { setOpen(open[i] ? open.map((item, z) => i == z ? false : item) : open.map((item, z) => z == i ? true : isMob() ? item : false)); }}>
-                        {item.question} <div className={`${styles.icon} ${open[i] ? 'active' : ''}`}><IconChevronDown /></div>
+                    <div className={`${styles.row} entry-d-${i + 1} ${open == item.question && item.answer ? "active" : ""}`} key={`ai-${i}`}>
+                      <div className={`${styles.header}`} onClick={() => { setOpen(item.question == open ? "" : item.question); }}>
+                        {item.question} <div className={`${styles.icon} ${open == item.question ? 'active' : ''}`}><IconChevronDown /></div>
                       </div>
-                      {item.answer && <Collapse in={open[i]}>
+                      {item.answer && <Collapse in={open == item.question}>
                         <div className={`${styles.inner}`}>
                           <div dangerouslySetInnerHTML={{ __html: item.answer }}>
 
