@@ -28,9 +28,17 @@
 
   @include media-breakpoint-down(md) {
     h1 {
-      font-size: 1.875rem;
+      font-size: 1.75rem;
     }
   }
+}
+
+.signup {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: $font-family-secondary;
+  margin: 0 1rem;
 }
 
 .markets {
@@ -83,6 +91,6 @@
   }
 
   @include media-breakpoint-down(md) {
-    height: 100px;
+    height: 200px;
   }
 }

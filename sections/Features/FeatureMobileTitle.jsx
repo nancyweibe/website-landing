@@ -32,12 +32,9 @@ const FeatureMobileTitle = ({ isActive }) => {
           <Row>
             <Col className="position-relative">
               <h1 className={`${styles.heading} ${play2 ? 'play' : ''} d-block d-md-none`}>
-                <div data-splitting>"THE WORLD'S</div>
-                <div className="d1" data-splitting>SAFEST AND</div>
-                <div className="d2" data-splitting>BEST SOCIAL</div>
-                <div className="d3" data-splitting>MEDIA BUILT</div>
-                <div className="d4" data-splitting>FOR FINANCIAL</div>
-                <div className="d6" data-splitting>COMMUNITIES</div>
+                <div data-splitting>"A social platform</div>
+                <div className="d1" data-splitting>thoughtfully designed</div>
+                <div className="d2" data-splitting>for financial communities"</div>
               </h1>
               <div className={`${styles.likeAnimation} ${play3 ? 'active' : ''}`}>
                 <div className={`${styles.likeBg}`}>

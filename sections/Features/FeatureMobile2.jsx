@@ -66,7 +66,7 @@ const FeatureMobile2 = ({ isActive }) => {
               <div className={`${styles.paragraphInner}`}>
                 <div className={`${styles.blockParagraph1} mx-auto ${play3 ? 'play' : ''} ${play4 ? 'play2' : ''} mt-4`}>
                   <div className={`${ts.textRegular2}`}>
-                    <p><strong>Want to learn to be successful in investing in the markets?</strong> The best way to achieve this is to learn from those already having success.</p>
+                    <p><strong>Want to know the best way to learn about financial markets?</strong> The best way to learn comes from watching and interacting with those who are already having success.</p>
                   </div>
                   <div className={`${ts.textRegular2}`}>
                     <p><strong>Our platform is built with tools to ease the learning curve.</strong></p>

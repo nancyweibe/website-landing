@@ -22,7 +22,7 @@ const Member = ({ name, role, image, isActive, index }) => {
         <div className={`${styles.member} mb-5 pb-3`}>
           <div className={`${styles.memberImg}`}>
             <Image
-              src={`/images/${image}`}
+              src={`/images/team/${image}`}
               alt={name}
               layout="fill"
             />

@@ -218,19 +218,10 @@ const Features = ({ isActive, setCanSlide }) => {
         <Container>
           <Row>
             <Col className="position-relative">
-              <h1 className={`${styles.heading} ${play2 ? 'play' : ''} d-none d-md-block`}>
-                <div data-splitting>"THE WORLD'S SAFEST</div>
-                <div className="d1" data-splitting>AND BEST SOCIAL MEDIA</div>
-                <div className="d2" data-splitting>BUILT FOR FINANCIAL</div>
-                <div className="d3" data-splitting>COMMUNITIES</div>
-              </h1>
-              <h1 className={`${styles.heading} ${play2 ? 'play' : ''} d-block d-md-none`}>
-                <div data-splitting>"THE WORLD'S</div>
-                <div className="d1" data-splitting>SAFEST AND</div>
-                <div className="d2" data-splitting>BEST SOCIAL</div>
-                <div className="d3" data-splitting>MEDIA BUILT</div>
-                <div className="d4" data-splitting>FOR FINANCIAL</div>
-                <div className="d6" data-splitting>COMMUNITIES</div>
+              <h1 className={`${styles.heading} ${play2 ? 'play' : ''}`}>
+                <div data-splitting>"A social platform</div>
+                <div className="d1" data-splitting>thoughtfully designed</div>
+                <div className="d2" data-splitting>for financial communities"</div>
               </h1>
               <div className={`${styles.likeAnimation} ${play3 ? 'active' : ''}`}>
                 <div className={`${styles.likeBg}`}>
@@ -270,7 +261,7 @@ const Features = ({ isActive, setCanSlide }) => {
                   <div>
                     <div className={`${styles.blockParagraph1} ${(step == 2 && play5) ? 'play' : ''} ${(step == 2 && play6) ? 'play2' : ''} mt-4`}>
                       <div className={`${ts.textRegular}`}>
-                        <p><strong>Want to learn to be successful in investing in the markets?</strong> The best way to achieve this is to learn from those already having success.</p>
+                        <p><strong>Want to know the best way to learn about financial markets?</strong> The best way to learn comes from watching and interacting with those who are already having success</p>
                       </div>
                       <div className={`${ts.textRegular}`}>
                         <p><strong>Our platform is built with tools to ease the learning curve.</strong></p>
@@ -280,11 +271,10 @@ const Features = ({ isActive, setCanSlide }) => {
                   </div>
                 </div>
                 <div className={`${styles.colum1} ${styles.blockInner} ${((step == 4 || step == 5) && play5) ? 'play' : ''}`}>
-                  <h2 className={`${ts.title2} ${styles.blockHeading} ${((step == 4 || step == 5) && play5) ? 'play' : ''}`}><div data-splitting>EVOLVE</div></h2>
+                  <h2 className={`${ts.title2} ${styles.blockHeading} ${((step == 4 || step == 5) && play5) ? 'play' : ''}`}><div data-splitting>PERSONAL GROWTH</div></h2>
                   <div>
                     <div style={{ height: "250px" }} className={`${styles.blockParagraph1} ${((step == 4 || step == 5) && play5) ? 'play' : ''} ${((step == 4 || step == 5) && play6) ? 'play2' : ''} mt-4`}>
                       <div className={`${ts.textRegular}`}>
-                        <p><strong>Lorem ipsum dolor sit amet, consectetur</strong></p>
                         <ul className={`${styles.list} ${((step == 4 || step == 5) && play5) ? 'play' : ''}`}>
                           <li><IconAllow /><span>Expand your mindset</span></li>
                           <li><IconAllow /><span>Challange your views</span></li>
@@ -312,21 +302,17 @@ const Features = ({ isActive, setCanSlide }) => {
                     </div>
                   </div>
                 </div>
-                <div className={`${styles.colum2} ${styles.blockInner} offset2 ${(step == 3 && play5) ? 'play' : ''}`}>
+                <div className={`${styles.colum2} ${styles.blockInner} ${(step == 3 && play5) ? 'play' : ''}`}>
                   <h2 className={`${ts.title2} ${styles.blockHeading} ${(step == 3 && play5) ? 'play' : ''}`}><div data-splitting>COMMUNITY</div></h2>
                   <div>
-                    <div className={`${styles.blockParagraph1} ${(step == 3 && play5) ? 'play' : ''} ${(step == 3 && play6) ? 'play2' : ''} mt-4`}>
+                    <div className={`${styles.blockParagraph1} ${(step == 3 && play5) ? 'play' : ''} mt-4`}>
                       <div className={`${ts.textRegular}`}>
-                        <p><strong>Lorem ipsum</strong> dolor sit arnet, consectetur</p>
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipiscing elit. Integer nec odio. Praesent libero.
-                        </p>
-                      </div>
-                      <div className={`${ts.textRegular}`}>
-                        <p><strong>Lorem ipsum</strong> dolor sit arnet, consectetur</p>
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipiscing elit. Integer nec odio. Praesent libero. Lorem ipsum dolor sit amet consectetur adipiscing elit. Integer nec odio. Praesent libero.
-                        </p>
+                        <ul className={`${styles.list} ${((step == 3 || step == 5) && play5) ? 'play' : ''}`}>
+                          <li><IconAllow /><span>Connect with others.</span></li>
+                          <li><IconAllow /><span>Share in each other's journey.</span></li>
+                          <li><IconAllow /><span>Learn from one another.</span></li>
+                          <li><IconAllow /><span>GROW TOGETHER.</span></li>
+                        </ul>
                       </div>
                     </div>
                   </div>

@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Phone from "./PhoneMobile";
 import Shape from "../../components/Shape";
 import ts from "../../styles/global/typography.module.scss"
+import { IconAllow } from "../../components/Icon"
 
 const FeatureMobile3 = ({ isActive }) => {
 
@@ -58,7 +59,7 @@ const FeatureMobile3 = ({ isActive }) => {
                 </video>
               </Phone>
             </div>
-            <div className={`${styles.mobile1Inner}`}>
+            <div className={`${styles.mobile3Inner}`}>
               <div className={`${styles.blockShapeMobile}`}>
                 <Shape isLarge play={play1} />
               </div>
@@ -66,16 +67,12 @@ const FeatureMobile3 = ({ isActive }) => {
               <div className={`${styles.paragraphInner}`}>
                 <div className={`${styles.blockParagraph1} mx-auto ${play3 ? 'play' : ''} ${play4 ? 'play2' : ''} mt-4`}>
                   <div className={`${ts.textRegular2}`}>
-                    <p><strong>Lorem ipsum</strong> dolor sit arnet, consectetur</p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit. Integer nec odio. Praesent libero.
-                    </p>
-                  </div>
-                  <div className={`${ts.textRegular2}`}>
-                    <p><strong>Lorem ipsum</strong> dolor sit arnet, consectetur</p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit. Integer nec odio. Praesent libero. Lorem ipsum dolor sit amet consectetur adipiscing elit. Integer nec odio. Praesent libero.
-                    </p>
+                    <ul className={`${styles.list} mobile ${play3 ? 'play' : ''}`}>
+                      <li><IconAllow /><span>Connect with others.</span></li>
+                      <li><IconAllow /><span>Share in each other's journey.</span></li>
+                      <li><IconAllow /><span>Learn from one another.</span></li>
+                      <li><IconAllow /><span>GROW TOGETHER.</span></li>
+                    </ul>
                   </div>
                 </div>
               </div>

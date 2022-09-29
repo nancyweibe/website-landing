@@ -6,80 +6,120 @@ import Member from "./Member";
 
 const team = [
   {
-    name: "Wade Warren",
-    role: "Programme Director",
-    image: "wade-warren.png"
+    name: "Taylor Perkins",
+    role: "Founder and CEO",
+    image: "taylor-perkins.png"
   },
   {
-    name: "Cameron Williamson",
-    role: "Senior Administration Officer",
-    image: "cameron-williamson.png"
+    name: "Bob Carroll",
+    role: "Technical Cofounder",
+    image: "bob-carroll.png"
   },
   {
-    name: "Wade Warren",
-    role: "Programme Director",
-    image: "wade-warren.png"
+    name: "Garrett Openshaw",
+    role: "Co-Founder",
+    image: "garrett-cpenshaw.png"
   },
   {
-    name: "Cameron Williamson",
-    role: "Senior Administration Officer",
-    image: "cameron-williamson.png"
+    name: "Drew Ingram",
+    role: "Co-Founder and CFO",
+    image: "drew-ingram.png"
   },
   {
-    name: "Wade Warren",
-    role: "Programme Director",
-    image: "wade-warren.png"
+    name: "Shane Herbert",
+    role: "Dev Team",
+    image: "shane-herbert.png"
   },
   {
-    name: "Cameron Williamson",
-    role: "Senior Administration Officer",
-    image: "cameron-williamson.png"
+    name: "Ramsey Carroll",
+    role: "Dev Team",
+    image: "ramsey-carroll.png"
   },
   {
-    name: "Wade Warren",
-    role: "Programme Director",
-    image: "wade-warren.png"
+    name: "Jeremiah Lachica",
+    role: "Dev Team",
+    image: "jeremiah-lachica.png"
   },
   {
-    name: "Cameron Williamson",
-    role: "Senior Administration Officer",
-    image: "cameron-williamson.png"
+    name: "John Michael Doroy",
+    role: "Dev Team",
+    image: "john-michael-doroy.png"
   },
   {
-    name: "Wade Warren",
-    role: "Programme Director",
-    image: "wade-warren.png"
+    name: "JM SANTOS",
+    role: "Advisor",
+    image: "JM-SANTOS.png"
   },
   {
-    name: "Cameron Williamson",
-    role: "Senior Administration Officer",
-    image: "cameron-williamson.png"
+    name: "Norman Li",
+    role: "Dev Team",
+    image: "norman-li.png"
   },
   {
-    name: "Wade Warren",
-    role: "Programme Director",
-    image: "wade-warren.png"
+    name: "Connor Hammond",
+    role: "Dev Team",
+    image: "connor-hammond.png"
   },
   {
-    name: "Cameron Williamson",
-    role: "Senior Administration Officer",
-    image: "cameron-williamson.png"
+    name: "Caleb Strong",
+    role: "Dev Team",
+    image: "caleb-strong.png"
   },
   {
-    name: "Wade Warren",
-    role: "Programme Director",
-    image: "wade-warren.png"
+    name: "Jay Rifkin",
+    role: "Advisor",
+    image: "jay-rifkin.png"
   },
   {
-    name: "Cameron Williamson",
-    role: "Senior Administration Officer",
-    image: "cameron-williamson.png"
+    name: "John Lee Dumas",
+    role: "Advisor",
+    image: "john-lee-dumas.png"
   },
   {
-    name: "Wade Warren",
-    role: "Programme Director",
-    image: "wade-warren.png"
-  }
+    name: "Jeff Fons",
+    role: "Advisor",
+    image: "jeff-fons.png"
+  },
+  {
+    name: "Colleen Fons",
+    role: "Advisor",
+    image: "colleen-fons.png"
+  },
+  {
+    name: "Evan Tardy",
+    role: "Advisor",
+    image: "evan-tardy.png"
+  },
+  {
+    name: "Kevin Hart",
+    role: "Advisor",
+    image: "kevin-hart.png"
+  },
+  {
+    name: "Mitch Perkins",
+    role: "Advisor",
+    image: "mitch-perkins.png"
+  },
+  {
+    name: "JohnnyZcash",
+    role: "Advisor",
+    image: "johnnyZCash.png"
+  },
+  {
+    name: "CyrptoBrag",
+    role: "Advisor",
+    image: "CryptoBrag.png"
+  },
+  {
+    name: "DreadBongo",
+    role: "Advisor",
+    image: "DreadBongo.png"
+  },
+  {
+    name: "CryptoGambit",
+    role: "Advisor",
+    image: "CryptoGambit.png"
+  },
 ]
 
 const TeamViewer = ({ isActive, setCanSlide }) => {
@@ -88,6 +128,7 @@ const TeamViewer = ({ isActive, setCanSlide }) => {
   const [play2, setPlay2] = useState(false)
   const [play4, setPlay4] = useState(false)
   const ref = useRef(null)
+  let z = 0
 
   useEffect(() => {
     if (isActive) {
@@ -107,22 +148,23 @@ const TeamViewer = ({ isActive, setCanSlide }) => {
     }
   }, [isActive])
 
+  const getIndex = () => {
+    let cur = z
+    z = z < 2 ? z + 1 : 0
+    return cur
+  }
+
   return (
     <section ref={ref} className={`${styles.root}`}>
       <Container>
         <Row className="pb-5">
-          <Col lg={4}>
+          <Col className="d-flex justify-content-center" lg={12}>
             <h1 className={`${ts.title} mb-5 ${play1 ? 'play' : ''}`}>
               <div data-splitting>Team</div>
             </h1>
-            <div className={`${play2 ? 'play' : ''} mb-5`}>
-              <p className={`${ts.textRegular} entry-d-1`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
           </Col>
           {team.map((member, i) => (
-            <Col className={`${styles.col}`} key={`mi-${i}`} md={6} lg={4}>
+            <Col style={{ marginTop: `${getIndex() * 2}rem` }} className={`${styles.col}`} key={`mi-${i}`} md={6} lg={4}>
               <Member {...member} isActive={isActive} index={i} />
             </Col>
           ))}

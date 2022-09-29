@@ -31,15 +31,22 @@ const Join = ({ isActive }) => {
       <Container>
         <Row>
           <Col className={`${styles.col1}`} md={12}>
-            <h1 className={`${styles.heading} text-center ${playSplitting ? 'play' : ''}`}>
-              <div data-splitting>JOIN THE WORLD'S</div>
-              <div className="d1" data-splitting>LARGEST AND SAFEST</div>
-              <div className="d2" data-splitting>FINANCIAL COMMUNITY</div>
+            <h1 className={`${styles.heading} text-center d-none d-md-block ${playSplitting ? 'play' : ''}`}>
+              <div data-splitting>JOIN US AS WE BUILD TO BECOME</div>
+              <div className="d1" data-splitting>THE WORLD’S LARGEST FINANCIAL</div>
+              <div className="d2" data-splitting>NETWORK AND COMMUNITY</div>
+            </h1>
+            <h1 className={`${styles.heading} text-center d-block d-md-none  ${playSplitting ? 'play' : ''}`}>
+              <div data-splitting>JOIN US AS WE BUILD</div>
+              <div className="d1" data-splitting>TO BECOME THE WORLD’S</div>
+              <div className="d2" data-splitting>LARGEST FINANCIAL</div>
+              <div className="d3" data-splitting>NETWORK AND COMMUNITY</div>
             </h1>
             <div className={`${styles.markets} ${play ? 'play' : ''}`}>
               <div className="entry-s-1">
                 <Button variant="info">
-                  <img style={{ width: "146px", height: "auto", margin: "0 1rem" }} src="/images/muunifi.png" alt="" />
+                  <div className={`${styles.signup}`}>Sign up</div>
+                  {/* <img style={{ width: "146px", height: "auto", margin: "0 1rem" }} src="/images/muunifi.png" alt="" /> */}
                 </Button>
               </div>
               <div className="entry-s-2">

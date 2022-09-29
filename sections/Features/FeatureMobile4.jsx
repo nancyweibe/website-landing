@@ -55,11 +55,10 @@ const FeatureMobile4 = ({ isActive }) => {
               <div className={`${styles.blockShapeMobile}`}>
                 <Shape isLarge play={play1} />
               </div>
-              <h2 className={`${ts.title2} ${play2 ? 'play' : ''}`}><div data-splitting>EVOLVE</div></h2>
+              <h2 className={`${ts.title2} ${play2 ? 'play' : ''}`}><div data-splitting>PERSONAL GROWTH</div></h2>
               <div className={`${styles.paragraphInner}`}>
                 <div className={`${styles.blockParagraph1} mx-auto ${play3 ? 'play' : ''} ${play4 ? 'play2' : ''} mt-4`}>
                   <div className={`${ts.textRegular2}`}>
-                    <p><strong>Lorem ipsum dolor sit amet, consectetur</strong></p>
                     <ul className={`${styles.list} mobile ${(play5) ? 'play' : ''}`}>
                       <li><IconAllow /><span>Expand your mindset</span></li>
                       <li><IconAllow /><span>Challange your views</span></li>
