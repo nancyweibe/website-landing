@@ -3,12 +3,12 @@ import styles from "./Features.module.scss"
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
 
-const Phone = ({ step, isActive, children }) => {
+const Phone = ({ step, isActive, children, isHide }) => {
 
 
   return (
     <div className={`${styles.phoneMobile} ${isActive ? 'active' : ''}`}>
-      <div className={`${styles.phoneMobileBg}`}>
+      <div className={`${styles.phoneMobileBg} ${isHide ? 'hide' : ''}`}>
         <Image
           src="/images/phone.png"
           alt="phone bg"

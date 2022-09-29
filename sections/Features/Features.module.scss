@@ -231,6 +231,11 @@
   width: 100%;
   height: 100%;
   z-index: 2;
+  transition: opacit $transition ease;
+
+  &:global(.hide) {
+    opacity: 0;
+  }
 }
 
 .videoMobileContainer {
@@ -361,6 +366,11 @@
   width: 100%;
   height: 100%;
   z-index: 2;
+  transition: opacity $transition ease;
+  
+  &:global(.hide) {
+    opacity: 0;
+  }
 }
 
 .videoContainer {
@@ -505,6 +515,25 @@
   &:global(.active) {
     opacity: 1;
   }
+}
+
+.phoneVideo2 {
+  width: 408px;
+  height: 674px;
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+}
+
+.phoneVideo2Mobile {
+  width: 262px;
+  height: 433px;
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  overflow: hidden;
+  transform: translateY(-50%);
 }
 
 .list {

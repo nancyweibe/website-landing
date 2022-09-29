@@ -4,6 +4,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import Phone from "./PhoneMobile";
 import Shape from "../../components/Shape";
 import ts from "../../styles/global/typography.module.scss"
+import Lottie from 'lottie-web'
+import screen2AnimationData from '../../public/animations/screen-2.json'
+
+let screen2Animation = null;
 
 const FeatureMobile2 = ({ isActive }) => {
 
@@ -11,9 +15,22 @@ const FeatureMobile2 = ({ isActive }) => {
   const [play4, setPlay4] = useState(false)
   const [play1, setPlay1] = useState(false)
   const [play2, setPlay2] = useState(false)
-  const videoRef1 = useRef(null)
   const ref = useRef(null)
   let tmr = null
+  const screen2AnimationContainer = useRef(null);
+
+  useEffect(() => {
+    if (!screen2Animation) {
+      screen2Animation = Lottie.loadAnimation({
+        container: screen2AnimationContainer.current,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        animationData: screen2AnimationData,
+        onSegmentStart: () => { console.log(1) }
+      })
+    }
+  }, [])
 
   useEffect(() => {
     if (isActive) {
@@ -29,7 +46,7 @@ const FeatureMobile2 = ({ isActive }) => {
         setPlay3(true)
       }, 1500)
 
-      videoRef1.current.play()
+      screen2Animation.play()
 
       tmr = setInterval(() => {
         setPlay4(c => !c)
@@ -46,16 +63,8 @@ const FeatureMobile2 = ({ isActive }) => {
         <Container>
           <Col>
             <div className={`${styles.phoneM2} ${play3 ? 'play' : ''}`}>
-              <Phone isActive={play1}>
-                <video
-                  ref={videoRef1}
-                  width="200"
-                  height="433"
-                  muted="muted"
-                >
-                  <source src="/animations/screen-2.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+              <Phone isHide={true} isActive={play1}>
+                <div className={`${styles.phoneVideo2Mobile}`} ref={screen2AnimationContainer}></div>
               </Phone>
             </div>
             <div className={`${styles.mobile1Inner}`}>

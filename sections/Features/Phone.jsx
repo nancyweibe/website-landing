@@ -2,6 +2,10 @@ import { useEffect, useState, useRef } from "react";
 import styles from "./Features.module.scss"
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
+import Lottie from 'lottie-web'
+import screen2AnimationData from '../../public/animations/screen-2.json'
+
+let screen2Animation = null;
 
 const Phone = ({ step, isActive }) => {
 
@@ -13,6 +17,21 @@ const Phone = ({ step, isActive }) => {
   const videoRef3 = useRef(null)
   const videoRef4 = useRef(null)
 
+  const screen2AnimationContainer = useRef(null);
+
+  useEffect(() => {
+    if (!screen2Animation) {
+      screen2Animation = Lottie.loadAnimation({
+        container: screen2AnimationContainer.current,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        animationData: screen2AnimationData,
+        onSegmentStart: () => { console.log(1) }
+      })
+    }
+  }, [])
+
   useEffect(() => {
     if (step == 1) {
       setTimeout(() => {
@@ -21,7 +40,7 @@ const Phone = ({ step, isActive }) => {
     }
     if (step == 2) {
       setTimeout(() => {
-        videoRef2.current.play()
+        screen2Animation.play()
       }, 2000)
     }
     if (step == 3) {
@@ -38,7 +57,7 @@ const Phone = ({ step, isActive }) => {
 
   return (
     <div className={`${styles.phone} s${step} ${isActive ? 'active' : ''}`}>
-      <div className={`${styles.phoneBg}`}>
+      <div className={`${styles.phoneBg} ${step == 2 ? 'hide' : ''}`}>
         <Image
           src="/images/phone.png"
           alt="phone bg"
@@ -57,16 +76,7 @@ const Phone = ({ step, isActive }) => {
           <source src="/animations/screen-1.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <video
-          ref={videoRef2}
-          className={`${styles.phoneVideo2} ${step == 2 ? 'active' : ''}`}
-          width="298"
-          height="645"
-          muted="muted"
-        >
-          <source src="/animations/screen-2.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div className={`${styles.phoneVideo2} ${step == 2 ? 'active' : ''}`} ref={screen2AnimationContainer}></div>
         <video
           ref={videoRef3}
           className={`${styles.phoneVideo3} ${step == 3 ? 'active' : ''}`}
