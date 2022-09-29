@@ -74,4 +74,8 @@
   &:hover {
     z-index: 2;
   }
+
+  @include media-breakpoint-down(lg) {
+    margin-top: 0 !important;
+  }
 }
