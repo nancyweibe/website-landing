@@ -9,7 +9,12 @@
 #app {
   height: 100%;
 }
-html,
+
+html {
+  position: relative;
+  height: 100%;
+}
+
 body {
   position: relative;
   height: 100%;
@@ -17,6 +22,14 @@ body {
 
   @include media-breakpoint-down(lg) {
     overflow-y: auto;
+  }
+}
+
+body {
+  &.full-scroll {
+    overflow: auto;
+    overflow-x: hidden;
+    height: auto;
   }
 }
 

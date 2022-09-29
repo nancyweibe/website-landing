@@ -35,7 +35,7 @@ const Phone = ({ step, isActive }) => {
   useEffect(() => {
     if (step == 1) {
       setTimeout(() => {
-        videoRef1.current.play()
+        videoRef1?.current?.play()
       }, 3500)
     }
     if (step == 2) {
@@ -45,12 +45,12 @@ const Phone = ({ step, isActive }) => {
     }
     if (step == 3) {
       setTimeout(() => {
-        videoRef3.current.play()
+        videoRef3?.current?.play()
       }, 2000)
     }
     if (step == 4 || step == 5) {
       setTimeout(() => {
-        videoRef4.current.play()
+        videoRef4?.current?.play()
       }, 2000)
     }
   }, [step])
@@ -68,7 +68,7 @@ const Phone = ({ step, isActive }) => {
       <div className={`${styles.videoContainer}`}>
         <video
           ref={videoRef1}
-          className={`${styles.phoneVideo1} ${step == 1 ? 'active' : ''}`}
+          className={`${styles.phoneVideo1} ${step == 1 || step == 0 ? 'active' : ''}`}
           width="298"
           height="645"
           muted="muted"

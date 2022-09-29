@@ -6,11 +6,8 @@ import Phone from "./Phone";
 import Shape from "../../components/Shape";
 import ts from "../../styles/global/typography.module.scss"
 import { IconAllow } from "../../components/Icon"
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Mousewheel } from 'swiper'
-import Progress from "./Progress";
 
-const Features = ({ isActive, setCanSlide }) => {
+const Features = ({ isActive, offsetBottom, offsetTop }) => {
 
   const [play3, setPlay3] = useState(false)
   const [play1, setPlay1] = useState(false)
@@ -18,6 +15,8 @@ const Features = ({ isActive, setCanSlide }) => {
   const [play4, setPlay4] = useState(false)
   const [play5, setPlay5] = useState(false)
   const [play6, setPlay6] = useState(false)
+  const [playS1T1, setPlayS1T1] = useState(false)
+  const [playS1T2, setPlayS1T2] = useState(false)
   const [step, setStep] = useState(0)
   const [isDisableScroll, setIsDisableScroll] = useState(false)
   const videoRef = useRef(null)
@@ -25,13 +24,11 @@ const Features = ({ isActive, setCanSlide }) => {
   const lastPos = useRef(0)
   const sStep = useRef(0)
   const del = useRef(0)
-  const [swiper, setSwiper] = useState(null)
-  const [progressPlay, setProgressPlay] = useState(false)
+  const [active, setActive] = useState(false)
+  const [scrollPosition, setScrollPosition] = useState(0)
 
   useEffect(() => {
     if (isActive) {
-      setCanSlide(false)
-
       setTimeout(() => {
         setPlay1(true)
       }, 200)
@@ -45,36 +42,109 @@ const Features = ({ isActive, setCanSlide }) => {
         videoRef.current.play()
       }, 1000)
     }
-
   }, [isActive])
 
   useEffect(() => {
-    if (swiper) {
-      swiper.on('slideChangeTransitionStart', onSlideChange)
-    }
-  }, [swiper])
 
-  const onSlideChange = (e) => {
-    if (e.activeIndex == 0 && e.previousIndex == 1) {
-      setStep(0)
-      setCanSlide(true)
-      return
-    }
-    if (e.activeIndex == 6 && e.previousIndex == 5) {
-      setCanSlide(true)
-      return
-    }
+    window.addEventListener('scroll', onScroll)
 
-    if (e.activeIndex != 6 && e.activeIndex != 1 && !(e.activeIndex == 5 && e.previousIndex == 6)) {
-      e.mousewheel.disable()
-      setProgressPlay(true)
-      setStep(e.activeIndex - 1)
-      setTimeout(() => {
-        e.mousewheel.enable()
-        setProgressPlay(false)
-      }, 7000)
-    }
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const onScroll = (e) => {
+    setScrollPosition(window.pageYOffset)
   }
+
+
+  useEffect(() => {
+    const body = document.body,
+      html = document.documentElement;
+
+    const height = Math.max(body.scrollHeight, body.offsetHeight,
+      html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+    if (scrollPosition > offsetTop && scrollPosition < height - offsetBottom - window.innerHeight) {
+      setActive(true)
+      setTimeout(() => {
+        setPlay1(true)
+      }, 200)
+
+      setTimeout(() => {
+        setPlay2(true)
+      }, 500)
+
+      setTimeout(() => {
+        setPlay3(true)
+        videoRef.current.play()
+      }, 1000)
+      const p = ((scrollPosition - offsetTop) / (height - offsetTop - offsetBottom - offsetBottom) * 100)
+      document.documentElement.style.setProperty('--scroll', p / 100);
+
+      console.log(p)
+
+      if (p > 0 && p < 5.6) {
+        setStep(0)
+      }
+      if (p > 5.6 && p < 12) {
+        setStep(1)
+        setPlayS1T1(false)
+        setPlayS1T2(false)
+      } 
+      if (p > 12 && p < 20) {
+        setPlayS1T1(true)
+      }
+      if (p > 16 && p < 24) {
+        setPlayS1T2(true)
+        setPlayS1T1(true)
+        setStep(1)
+      }
+      if (p > 24 && p < 30) {
+        setStep(2)
+        setPlayS1T1(false)
+        setPlayS1T2(false)
+      }
+      if (p > 30 && p < 36) {
+        setPlayS1T1(true)
+      }
+      if (p > 34 && p < 40) {
+        setPlayS1T2(true)
+      }
+      if (p > 46 && p < 50) {
+        setPlayS1T2(true)
+        setPlayS1T1(true)
+        setStep(2)
+      }
+      if (p > 50 && p < 58) {
+        setStep(3)
+        setPlayS1T1(false)
+        setPlayS1T2(false)
+      }
+      if (p > 58 && p < 60) {
+        setPlayS1T1(true)
+      }
+      if (p > 66 && p < 76) {
+        setPlayS1T2(true)
+        setPlayS1T1(true)
+        setStep(3)
+      }
+      if (p > 76 && p < 96) {
+        setStep(4)
+        setPlayS1T1(false)
+        setPlayS1T2(false)
+      }
+
+      if (p > 90 && p < 100) {
+        setPlayS1T1(true)
+      }
+
+      if (p > 94 && p < 100) {
+        setPlayS1T2(true)
+      }
+
+    } else {
+      setActive(false)
+    }
+  }, [scrollPosition])
 
   useEffect(() => {
 
@@ -92,13 +162,6 @@ const Features = ({ isActive, setCanSlide }) => {
     if (t5) clearTimeout(t5)
     if (t6) clearTimeout(t6)
 
-    if (step == 0) {
-      setCanSlide(true)
-      setPlay4(false)
-    }
-    if (step == 5) {
-      setCanSlide(true)
-    }
     if (step == 1) {
       setPlay5(false)
       setPlay6(false)
@@ -114,7 +177,7 @@ const Features = ({ isActive, setCanSlide }) => {
 
       t4 = setTimeout(() => {
         setPlay4(true)
-      }, 3000)
+      }, 1000)
 
       setTimeout(() => {
         setIsDisableScroll(false)
@@ -178,42 +241,8 @@ const Features = ({ isActive, setCanSlide }) => {
     }
   }, [step])
 
-  const options = useMemo(() => (
-    {
-      direction: 'vertical',
-      modules: [Navigation, Pagination, Mousewheel],
-      mousewheel: true,
-      speed: 1000,
-    }
-  ))
-
   return (
-    <section ref={ref} className={`${styles.root}`}>
-      <Progress isActive={isActive && step > 0} play={progressPlay} />
-      <Swiper className={`${styles.swiper}`} onSwiper={setSwiper} {...options}>
-        <SwiperSlide>
-          <div></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div></div>
-        </SwiperSlide>
-      </Swiper>
-
+    <section ref={ref} className={`${styles.root} ${active ? 'active' : ''}`}>
       <div className={`${styles.titleContainer} s${step}`}>
         <Container>
           <Row>
@@ -256,10 +285,11 @@ const Features = ({ isActive, setCanSlide }) => {
             </div>
             <Row className="position-relative">
               <Col className={`position-relative`} md={6}>
-                <div className={`${styles.colum1} ${styles.blockInner} offset2 ${(step == 2 && play5) ? 'play' : ''}`}>
-                  <h2 className={`${ts.title2} ${styles.blockHeading} ${(step == 2 && play5) ? 'play' : ''}`}><div data-splitting>EDUCATION</div></h2>
+
+                <div className={`${styles.colum1} ${styles.blockInner} offset2 ${(step == 2 && playS1T1) ? 'play' : ''}`}>
+                  <h2 className={`${ts.title2} ${styles.blockHeading} ${(step == 2 && playS1T1) ? 'play' : ''}`}><div data-splitting>EDUCATION</div></h2>
                   <div>
-                    <div className={`${styles.blockParagraph1} ${(step == 2 && play5) ? 'play' : ''} ${(step == 2 && play6) ? 'play2' : ''} mt-4`}>
+                    <div className={`${styles.blockParagraph1} ${(step == 2 && playS1T1) ? 'play' : ''} ${(step == 2 && playS1T2) ? 'play2' : ''} mt-4`}>
                       <div className={`${ts.textRegular}`}>
                         <p><strong>Want to know the best way to learn about financial markets?</strong> The best way to learn comes from watching and interacting with those who are already having success</p>
                       </div>
@@ -270,12 +300,12 @@ const Features = ({ isActive, setCanSlide }) => {
                     </div>
                   </div>
                 </div>
-                <div className={`${styles.colum1} ${styles.blockInner} ${((step == 4 || step == 5) && play5) ? 'play' : ''}`}>
-                  <h2 className={`${ts.title2} ${styles.blockHeading} ${((step == 4 || step == 5) && play5) ? 'play' : ''}`}><div data-splitting>PERSONAL GROWTH</div></h2>
+                <div className={`${styles.colum1} ${styles.blockInner} ${((step == 4 || step == 5) && playS1T1) ? 'play' : ''}`}>
+                  <h2 className={`${ts.title2} ${styles.blockHeading} ${((step == 4 || step == 5) && playS1T1) ? 'play' : ''}`}><div data-splitting>PERSONAL GROWTH</div></h2>
                   <div>
-                    <div style={{ height: "250px" }} className={`${styles.blockParagraph1} ${((step == 4 || step == 5) && play5) ? 'play' : ''} ${((step == 4 || step == 5) && play6) ? 'play2' : ''} mt-4`}>
+                    <div style={{ height: "250px" }} className={`${styles.blockParagraph1} ${((step == 4 || step == 5) && playS1T1) ? 'play' : ''} ${((step == 4 || step == 5) && playS1T2) ? 'play2' : ''} mt-4`}>
                       <div className={`${ts.textRegular}`}>
-                        <ul className={`${styles.list} ${((step == 4 || step == 5) && play5) ? 'play' : ''}`}>
+                        <ul className={`${styles.list} ${((step == 4 || step == 5) && playS1T1) ? 'play' : ''}`}>
                           <li><IconAllow /><span>Expand your mindset</span></li>
                           <li><IconAllow /><span>Challange your views</span></li>
                           <li><IconAllow /><span>Explore new ideas</span></li>
@@ -288,9 +318,9 @@ const Features = ({ isActive, setCanSlide }) => {
               </Col>
               <Col className="position-relative" md={6}>
                 <div className={`${styles.colum2}`}>
-                  <h2 className={`${ts.title2} ${styles.blockHeading} ${(step == 1 && play5) ? 'play' : ''}`}><div data-splitting>TRUST</div></h2>
+                  <h2 className={`${ts.title2} ${styles.blockHeading} ${(step == 1 && playS1T1) ? 'play' : ''}`}><div data-splitting>TRUST</div></h2>
                   <div>
-                    <div className={`${styles.blockParagraph1} ${(step == 1 && play5) ? 'play' : ''} ${(step == 1 && play6) ? 'play2' : ''} mt-4`}>
+                    <div className={`${styles.blockParagraph1} ${(step == 1 && playS1T1) ? 'play' : ''} ${(step == 1 && playS1T2) ? 'play2' : ''} mt-4`}>
                       <div className={`${ts.textRegular}`}>
                         <p><strong>Who can you trust online?</strong> Followers, engagement, views, likes, etc. are not good enough. You need the full data.</p>
                       </div>
@@ -302,12 +332,12 @@ const Features = ({ isActive, setCanSlide }) => {
                     </div>
                   </div>
                 </div>
-                <div className={`${styles.colum2} ${styles.blockInner} ${(step == 3 && play5) ? 'play' : ''}`}>
-                  <h2 className={`${ts.title2} ${styles.blockHeading} ${(step == 3 && play5) ? 'play' : ''}`}><div data-splitting>COMMUNITY</div></h2>
+                <div className={`${styles.colum2} ${styles.blockInner} ${(step == 3 && playS1T1) ? 'play' : ''}`}>
+                  <h2 className={`${ts.title2} ${styles.blockHeading} ${(step == 3 && playS1T1) ? 'play' : ''}`}><div data-splitting>COMMUNITY</div></h2>
                   <div>
-                    <div className={`${styles.blockParagraph1} ${(step == 3 && play5) ? 'play' : ''} mt-4`}>
+                    <div className={`${styles.blockParagraph1} ${(step == 3 && playS1T1) ? 'play' : ''} mt-4`}>
                       <div className={`${ts.textRegular}`}>
-                        <ul className={`${styles.list} ${((step == 3 || step == 5) && play5) ? 'play' : ''}`}>
+                        <ul className={`${styles.list} ${((step == 3 || step == 5) && playS1T1) ? 'play' : ''}`}>
                           <li><IconAllow /><span>Connect with others.</span></li>
                           <li><IconAllow /><span>Share in each other's journey.</span></li>
                           <li><IconAllow /><span>Learn from one another.</span></li>
