@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Hero.module.scss"
 import Image from "next/image";
 import { Button, Container, Row, Col } from "react-bootstrap";
+import Link from "next/link"
 
 const Hero = () => {
 
@@ -39,24 +40,32 @@ const Hero = () => {
             </h1>
             <div className={`${styles.markets} ${play ? 'play' : ''}`}>
               <div className="entry-h-2">
-                <Button variant="info">
-                  <Image
-                    src="/images/google-play.png"
-                    alt="play market"
-                    width={193}
-                    height={46}
-                  />
-                </Button>
+                <Link href={`https://play.google.com/store/apps/details?id=com.muunifi.android`}>
+                  <a target="blank">
+                    <Button variant="info">
+                      <Image
+                        src="/images/google-play.png"
+                        alt="play market"
+                        width={193}
+                        height={46}
+                      />
+                    </Button>
+                  </a>
+                </Link>
               </div>
               <div className="entry-h-1">
-                <Button variant="info">
-                  <Image
-                    src="/images/app-store.png"
-                    alt="app store"
-                    width={172}
-                    height={46}
-                  />
-                </Button>
+                <Link href={`https://apps.apple.com/us/app/muunifi-investing-starts-here/id1616471831`}>
+                  <a target="blank">
+                    <Button variant="info">
+                      <Image
+                        src="/images/app-store.png"
+                        alt="app store"
+                        width={172}
+                        height={46}
+                      />
+                    </Button>
+                  </a>
+                </Link>
               </div>
             </div>
           </Col>

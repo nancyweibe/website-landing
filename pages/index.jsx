@@ -48,7 +48,7 @@ export default function Home() {
         <meta name="description" content="Home" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+
       <VisibilitySensor minTopValue={100} partialVisibility={true}>
         {({ isVisible }) =>
           <Hero isActive={isVisible} />
@@ -84,13 +84,13 @@ export default function Home() {
               <Features setCanSlide={setCanSlide} isActive={isVisible} offsetTop={w?.innerHeight} offsetBottom={w?.innerHeight} />
             }
           </VisibilitySensor>
-          <VisibilitySensor minTopValue={100} partialVisibility={true}>
-            {({ isVisible }) =>
-              <Join isActive={isVisible} />
-            }
-          </VisibilitySensor>
         </>
       }
+      <VisibilitySensor minTopValue={100} partialVisibility={true}>
+        {({ isVisible }) =>
+          <Join isActive={isVisible} />
+        }
+      </VisibilitySensor>
     </>
   )
 }

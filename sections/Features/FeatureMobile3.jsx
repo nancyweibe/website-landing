@@ -5,6 +5,10 @@ import Phone from "./PhoneMobile";
 import Shape from "../../components/Shape";
 import ts from "../../styles/global/typography.module.scss"
 import { IconAllow } from "../../components/Icon"
+import Lottie from 'lottie-web'
+import screen3AnimationData from '../../public/animations/screen-3.json'
+
+let screen3Animation = null;
 
 const FeatureMobile3 = ({ isActive }) => {
 
@@ -12,9 +16,23 @@ const FeatureMobile3 = ({ isActive }) => {
   const [play4, setPlay4] = useState(false)
   const [play1, setPlay1] = useState(false)
   const [play2, setPlay2] = useState(false)
-  const videoRef1 = useRef(null)
   const ref = useRef(null)
+  const shapeContainerRef = useRef(null)
   let tmr = null
+  const screen3AnimationContainer = useRef(null);
+
+  useEffect(() => {
+    if (!screen3Animation) {
+      screen3Animation = Lottie.loadAnimation({
+        container: screen3AnimationContainer.current,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        animationData: screen3AnimationData,
+        onSegmentStart: () => { console.log(1) }
+      })
+    }
+  }, [])
 
   useEffect(() => {
     if (isActive) {
@@ -30,7 +48,9 @@ const FeatureMobile3 = ({ isActive }) => {
         setPlay3(true)
       }, 1500)
 
-      videoRef1.current.play()
+      setTimeout(() => {
+        screen3Animation.play()
+      }, 1500)
 
       tmr = setInterval(() => {
         setPlay4(c => !c)
@@ -48,20 +68,12 @@ const FeatureMobile3 = ({ isActive }) => {
           <Col>
             <div className={`${styles.phoneM2} ${play3 ? 'play' : ''}`}>
               <Phone isActive={play1}>
-                <video
-                  ref={videoRef1}
-                  width="200"
-                  height="433"
-                  muted="muted"
-                >
-                  <source src="/animations/screen-3.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div className={`${styles.phoneVideo3Mobile}`} ref={screen3AnimationContainer}></div>
               </Phone>
             </div>
-            <div className={`${styles.mobile3Inner}`}>
+            <div ref={shapeContainerRef} className={`${styles.mobile3Inner}`}>
               <div className={`${styles.blockShapeMobile}`}>
-                <Shape isLarge play={play1} />
+                <Shape ref={shapeContainerRef} isLarge play={play1} />
               </div>
               <h2 className={`${ts.title2} ${play2 ? 'play' : ''}`}><div data-splitting>COMMUNITY</div></h2>
               <div className={`${styles.paragraphInner}`}>

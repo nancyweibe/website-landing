@@ -28,23 +28,6 @@ const Features = ({ isActive, offsetBottom, offsetTop }) => {
   const [scrollPosition, setScrollPosition] = useState(0)
 
   useEffect(() => {
-    if (isActive) {
-      setTimeout(() => {
-        setPlay1(true)
-      }, 200)
-
-      setTimeout(() => {
-        setPlay2(true)
-      }, 500)
-
-      setTimeout(() => {
-        setPlay3(true)
-        videoRef.current.play()
-      }, 1000)
-    }
-  }, [isActive])
-
-  useEffect(() => {
 
     window.addEventListener('scroll', onScroll)
 
@@ -67,20 +50,17 @@ const Features = ({ isActive, offsetBottom, offsetTop }) => {
       setActive(true)
       setTimeout(() => {
         setPlay1(true)
-      }, 200)
-
-      setTimeout(() => {
-        setPlay2(true)
       }, 500)
+
+      setPlay2(true)
 
       setTimeout(() => {
         setPlay3(true)
-        videoRef.current.play()
-      }, 1000)
+        videoRef?.current?.play()
+      }, 500)
+
       const p = ((scrollPosition - offsetTop) / (height - offsetTop - offsetBottom - offsetBottom) * 100)
       document.documentElement.style.setProperty('--scroll', p / 100);
-
-      console.log(p)
 
       if (p > 0 && p < 5.6) {
         setStep(0)
@@ -89,7 +69,7 @@ const Features = ({ isActive, offsetBottom, offsetTop }) => {
         setStep(1)
         setPlayS1T1(false)
         setPlayS1T2(false)
-      } 
+      }
       if (p > 12 && p < 20) {
         setPlayS1T1(true)
       }

@@ -47,7 +47,7 @@ const team = [
   },
   {
     name: "JM SANTOS",
-    role: "Advisor",
+    role: "Dev Team",
     image: "JM-SANTOS.png"
   },
   {
@@ -150,7 +150,7 @@ const TeamViewer = ({ isActive, setCanSlide }) => {
 
   const getIndex = () => {
     let cur = z
-    z = z < 2 ? z + 1 : 0
+    z = z < 3 ? z + 1 : 0
     return cur
   }
 
@@ -164,7 +164,7 @@ const TeamViewer = ({ isActive, setCanSlide }) => {
             </h1>
           </Col>
           {team.map((member, i) => (
-            <Col style={{ marginTop: `${getIndex() * 2}rem` }} className={`${styles.col}`} key={`mi-${i}`} md={6} lg={4}>
+            <Col style={{ marginTop: `${getIndex() * 2}rem` }} className={`${styles.col}`} key={`mi-${i}`} md={6} lg={3}>
               <Member {...member} isActive={isActive} index={i} />
             </Col>
           ))}

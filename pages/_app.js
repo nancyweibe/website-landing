@@ -19,6 +19,7 @@ function App({ Component, pageProps }) {
     setIsLoaded(isLoaded)
   };
   const end = (e) => {
+    window.scrollTo(0, 0)
     setIsLoaded(true)
   };
 
@@ -26,6 +27,8 @@ function App({ Component, pageProps }) {
     router.events.on("routeChangeStart", start);
     router.events.on("routeChangeComplete", end);
     router.events.on("routeChangeError", end);
+
+    window.scrollTo(0, 0)
 
     setIsLoaded(true)
 

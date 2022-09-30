@@ -23,8 +23,8 @@ const MobileMenu = ({ active, links, setIsActiveMobile }) => {
         <div className={`${styles.socials} ${active ? 'active' : ''}`}>
           <span>Our Social Media:</span>
           <div className={styles.socialInner}>
-            <a href="#" target="blank"><IconFacebook /></a>
-            <a href="#" target="blank"><IconTwitter /></a>
+            <a href="https://www.linkedin.com/company/muunifi-com/" target="blank"><IconFacebook /></a>
+            <a href="https://twitter.com/MuunifiSocial" target="blank"><IconTwitter /></a>
           </div>
         </div>
         <div className={`${styles.mobileTermsNavigation} ${active ? 'active' : ''}`}>

@@ -52,7 +52,7 @@
   padding: 2rem 0;
   min-height: 0;
   margin-top: 300px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   h1 {
     font-size: 2.1875rem;
@@ -151,8 +151,16 @@
 }
 
 .paragraphInner {
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
+
+  @include media-breakpoint-down(lg) {
+    max-width: 700px;
+  }
+
+  @include media-breakpoint-down(md) {
+    max-width: 400px;
+  }
 }
 
 .likeAnimation {
@@ -251,15 +259,8 @@
 .videoMobileContainer {
   width: 200px;
   height: 433px;
-
-  video {
-    position: absolute;
-    border-radius: 30px;
-    overflow: hidden;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .blockShapeMobile {
@@ -368,13 +369,6 @@
   height: 645px;
   border-radius: 30px;
   overflow: hidden;
-
-  video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
 }
 
 .blocks {
@@ -457,6 +451,14 @@
       }
     }
   }
+
+  @include media-breakpoint-down(lg) {
+    max-width: 700px;
+  }
+
+  @include media-breakpoint-down(md) {
+    max-width: 400px;
+  }
 }
 
 .blockInner {
@@ -493,6 +495,17 @@
 .phoneVideo4 {
   border-radius: 30px;
   overflow: hidden;
+}
+
+.phoneVideo1,
+.phoneVideo3,
+.phoneVideo4 {
+  width: 298px;
+  height: 645px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .phoneVideo1,

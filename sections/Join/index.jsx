@@ -50,14 +50,22 @@ const Join = ({ isActive }) => {
                 </Button>
               </div>
               <div className="entry-s-2">
-                <Button variant="info">
-                  <img src="/images/google-play.png" alt="" />
-                </Button>
+                <Link href={`https://play.google.com/store/apps/details?id=com.muunifi.android`}>
+                  <a target="blank">
+                    <Button variant="info">
+                      <img src="/images/google-play.png" alt="" />
+                    </Button>
+                  </a>
+                </Link>
               </div>
               <div className="entry-s-3">
-                <Button variant="info">
-                  <img src="/images/app-store.png" alt="" />
-                </Button>
+                <Link href={`https://apps.apple.com/us/app/muunifi-investing-starts-here/id1616471831`}>
+                  <a target="blank">
+                    <Button variant="info">
+                      <img src="/images/app-store.png" alt="" />
+                    </Button>
+                  </a>
+                </Link>
               </div>
             </div>
           </Col>

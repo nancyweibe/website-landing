@@ -15,6 +15,7 @@ const FeatureMobile2 = ({ isActive }) => {
   const [play4, setPlay4] = useState(false)
   const [play1, setPlay1] = useState(false)
   const [play2, setPlay2] = useState(false)
+  const shapeContainerRef = useRef(null)
   const ref = useRef(null)
   let tmr = null
   const screen2AnimationContainer = useRef(null);
@@ -46,7 +47,9 @@ const FeatureMobile2 = ({ isActive }) => {
         setPlay3(true)
       }, 1500)
 
-      screen2Animation.play()
+      setTimeout(() => {
+        screen2Animation.play()
+      }, 1500)
 
       tmr = setInterval(() => {
         setPlay4(c => !c)
@@ -67,9 +70,9 @@ const FeatureMobile2 = ({ isActive }) => {
                 <div className={`${styles.phoneVideo2Mobile}`} ref={screen2AnimationContainer}></div>
               </Phone>
             </div>
-            <div className={`${styles.mobile1Inner}`}>
+            <div ref={shapeContainerRef} className={`${styles.mobile1Inner}`}>
               <div className={`${styles.blockShapeMobile}`}>
-                <Shape isLarge play={play1} />
+                <Shape ref={shapeContainerRef} isLarge play={play1} />
               </div>
               <h2 className={`${ts.title2} ${play2 ? 'play' : ''}`}><div data-splitting>EDUCATION</div></h2>
               <div className={`${styles.paragraphInner}`}>

@@ -5,6 +5,10 @@ import Phone from "./PhoneMobile";
 import Shape from "../../components/Shape";
 import ts from "../../styles/global/typography.module.scss"
 import { IconAllow } from "../../components/Icon"
+import Lottie from 'lottie-web'
+import screen4AnimationData from '../../public/animations/screen-4.json'
+
+let screen4Animation = null;
 
 const FeatureMobile4 = ({ isActive }) => {
 
@@ -13,9 +17,23 @@ const FeatureMobile4 = ({ isActive }) => {
   const [play5, setPlay5] = useState(false)
   const [play1, setPlay1] = useState(false)
   const [play2, setPlay2] = useState(false)
-  const videoRef1 = useRef(null)
+  const shapeContainerRef = useRef(null)
   const ref = useRef(null)
   let tmr = null
+  const screen4AnimationContainer = useRef(null);
+
+  useEffect(() => {
+    if (!screen4Animation) {
+      screen4Animation = Lottie.loadAnimation({
+        container: screen4AnimationContainer.current,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        animationData: screen4AnimationData,
+        onSegmentStart: () => { console.log(1) }
+      })
+    }
+  }, [])
 
   useEffect(() => {
     if (isActive) {
@@ -29,13 +47,12 @@ const FeatureMobile4 = ({ isActive }) => {
 
       setTimeout(() => {
         setPlay3(true)
+        screen4Animation.play()
       }, 1500)
 
       setTimeout(() => {
         setPlay5(true)
       }, 2500)
-
-      videoRef1.current.play()
 
       tmr = setInterval(() => {
         setPlay4(c => !c)
@@ -51,11 +68,11 @@ const FeatureMobile4 = ({ isActive }) => {
       <div className={`${styles.blocksMobile} mt-5`}>
         <Container>
           <Col>
-            <div className={`${styles.mobile4Inner}`}>
+            <div ref={shapeContainerRef} className={`${styles.mobile4Inner}`}>
               <div className={`${styles.blockShapeMobile}`}>
-                <Shape isLarge play={play1} />
+                <Shape ref={shapeContainerRef} isLarge play={play1} />
               </div>
-              <h2 className={`${ts.title2} ${play2 ? 'play' : ''}`}><div data-splitting>PERSONAL GROWTH</div></h2>
+              <h2 className={`${ts.title2} ${play2 ? 'play' : ''} pt-5`}><div data-splitting>PERSONAL GROWTH</div></h2>
               <div className={`${styles.paragraphInner}`}>
                 <div className={`${styles.blockParagraph1} mx-auto ${play3 ? 'play' : ''} ${play4 ? 'play2' : ''} mt-4`}>
                   <div className={`${ts.textRegular2}`}>
@@ -71,15 +88,7 @@ const FeatureMobile4 = ({ isActive }) => {
             </div>
             <div className={`${styles.phoneM4} ${play3 ? 'play' : ''}`}>
               <Phone isActive={play1}>
-                <video
-                  ref={videoRef1}
-                  width="200"
-                  height="433"
-                  muted="muted"
-                >
-                  <source src="/animations/screen-4.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div className={`${styles.phoneVideo4Mobile}`} ref={screen4AnimationContainer}></div>
               </Phone>
             </div>
           </Col>
