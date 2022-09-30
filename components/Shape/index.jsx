@@ -22,4 +22,6 @@ const Shape = React.forwardRef((props, ref) => {
   )
 })
 
+Shape.displayName = 'Shape';
+
 export default Shape;
