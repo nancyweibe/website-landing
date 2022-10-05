@@ -44,10 +44,14 @@ const Join = ({ isActive }) => {
             </h1>
             <div className={`${styles.markets} ${play ? 'play' : ''}`}>
               <div className="entry-s-1">
-                <Button variant="info">
-                  <div className={`${styles.signup}`}>Sign up</div>
-                  {/* <img style={{ width: "146px", height: "auto", margin: "0 1rem" }} src="/images/muunifi.png" alt="" /> */}
-                </Button>
+                <Link href={`https://muunifi.app`}>
+                  <a style={{textDecoration: 'none', color: 'inherit'}} target="blank">
+                    <Button variant="info">
+                      <div className={`${styles.signup}`}>Sign up</div>
+                      {/* <img style={{ width: "146px", height: "auto", margin: "0 1rem" }} src="/images/muunifi.png" alt="" /> */}
+                    </Button>
+                  </a>
+                </Link>
               </div>
               <div className="entry-s-2">
                 <Link href={`https://play.google.com/store/apps/details?id=com.muunifi.android`}>

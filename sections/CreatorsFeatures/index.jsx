@@ -1,10 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import styles from "./CreatorsFeatures.module.scss"
 import { Container, Row, Col } from "react-bootstrap";
-import Image from "next/image";
 import Shape from "../../components/Shape";
 import ts from "../../styles/global/typography.module.scss"
-import { IconAllow } from "../../components/Icon"
+import Image from "next/image"
 
 const CreatorsFeatures = ({ isActive, setCanSlide }) => {
 
@@ -17,9 +16,12 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
   const videoRef2 = useRef(null)
   const videoRef3 = useRef(null)
   const videoRef4 = useRef(null)
+  const [w, setW] = useState(null)
 
   useEffect(() => {
     if (isActive) {
+
+      setW(window)
 
       setTimeout(() => {
         setPlay1(true)
@@ -51,22 +53,37 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
             <div className={`${styles.blockShape}`}>
               <Shape isSquare play={play4} />
             </div>
-            <img className={`${styles.image} entry-op-2`} src="/images/creators-tools.svg" alt="" />
+            <Image
+              width="600"
+              height="513"
+              quality="85"
+              className={`${styles.image} entry-op-2`}
+              src="/images/content-creators-1.png"
+            />
           </Col>
           <Col lg={6} className={`position-relative d-flex align-items-center order-1 order-lg-2 ps-4 ${play4 ? 'play' : ''}`}>
             <div>
               <div onMouseOver={() => videoRef1.current.play()} className={`${styles.row} entry-d-1`}>
                 <div className={`${styles.icon}`}>
-                  <video
-                    ref={videoRef1}
-                    className={`${styles.listVideo} entry-op-4`}
-                    width="54"
-                    height="54"
-                    muted="muted"
-                  >
-                    <source src="/animations/money-bag-1.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  {w?.innerWidth > 1000 ?
+                    <video
+                      ref={videoRef1}
+                      className={`entry-op-4`}
+                      width="54"
+                      height="54"
+                      muted
+                    >
+                      <source src="/animations/money-bag-1.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    :
+                    <Image
+                      width="54"
+                      height="54"
+                      quality="85"
+                      src="/images/creators-icon-1.png"
+                    />
+                  }
                 </div>
                 <div>
                   <h3 className={`${ts.title3}`}>Tools to monetize</h3>
@@ -76,16 +93,25 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
 
               <div onMouseOver={() => videoRef2.current.play()} className={`${styles.row} entry-d-2`}>
                 <div className={`${styles.icon}`}>
-                  <video
-                    ref={videoRef2}
-                    className={`${styles.listVideo} entry-op-4`}
-                    width="54"
-                    height="54"
-                    muted="muted"
-                  >
-                    <source src="/animations/pie-chart.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  {w?.innerWidth > 1000 ?
+                    <video
+                      ref={videoRef2}
+                      className={`entry-op-4`}
+                      width="54"
+                      height="54"
+                      muted
+                    >
+                      <source src="/animations/pie-chart.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    :
+                    <Image
+                      width="54"
+                      height="54"
+                      quality="85"
+                      src="/images/creators-icon-2.png"
+                    />
+                  }
                 </div>
                 <div>
                   <h3 className={`${ts.title3}`}>Invest in other creators</h3>
@@ -95,16 +121,24 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
 
               <div onMouseOver={() => videoRef3.current.play()} className={`${styles.row} entry-d-3`}>
                 <div className={`${styles.icon}`}>
-                  <video
-                    ref={videoRef3}
-                    className={`${styles.listVideo}`}
-                    width="54"
-                    height="54"
-                    muted="muted"
-                  >
-                    <source src="/animations/line-chart.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  {w?.innerWidth > 1000 ?
+                    <video
+                      ref={videoRef3}
+                      width="54"
+                      height="54"
+                      muted
+                    >
+                      <source src="/animations/line-chart.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    :
+                    <Image
+                      width="54"
+                      height="54"
+                      quality="85"
+                      src="/images/creators-icon-3.png"
+                    />
+                  }
                 </div>
                 <div>
                   <h3 className={`${ts.title3}`}>Analytics to help grow your brand</h3>
@@ -114,16 +148,24 @@ const CreatorsFeatures = ({ isActive, setCanSlide }) => {
 
               <div onMouseOver={() => videoRef4.current.play()} className={`${styles.row} entry-d-4`}>
                 <div className={`${styles.icon}`}>
-                  <video
-                    ref={videoRef4}
-                    className={`${styles.listVideo}`}
-                    width="54"
-                    height="54"
-                    muted="muted"
-                  >
-                    <source src="/animations/controls.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  {w?.innerWidth > 1000 ?
+                    <video
+                      ref={videoRef4}
+                      width="54"
+                      height="54"
+                      muted
+                    >
+                      <source src="/animations/controls.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    :
+                    <Image
+                      width="54"
+                      height="54"
+                      quality="85"
+                      src="/images/creators-icon-4.png"
+                    />
+                  }
                 </div>
                 <div>
                   <h3 className={`${ts.title3}`}>Tools to better engage w/ community</h3>

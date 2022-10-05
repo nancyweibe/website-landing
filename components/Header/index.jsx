@@ -13,7 +13,7 @@ const links = [
   { name: "FAQ", link: "/faq" },
 ]
 
-const Header = ({isActiveMobile, setIsActiveMobile}) => {
+const Header = ({ isActiveMobile, setIsActiveMobile }) => {
 
   const router = useRouter();
 
@@ -23,7 +23,7 @@ const Header = ({isActiveMobile, setIsActiveMobile}) => {
 
   return (
     <div className={styles.root}>
-      <MobileMenu active={isActiveMobile} links={links} setIsActiveMobile={setIsActiveMobile}/>
+      <MobileMenu active={isActiveMobile} links={links} setIsActiveMobile={setIsActiveMobile} />
       <Container>
         <Row>
           <Col>
@@ -40,7 +40,11 @@ const Header = ({isActiveMobile, setIsActiveMobile}) => {
               </div>
               <div className="d-flex align-items-center">
                 <div className={styles.buttons}>
-                  <Button>Launch App</Button>
+                  <Link href="https://muunifi.app">
+                    <a style={{textDecoration: 'none', color: 'inherit'}} target="blank">
+                      <Button>Launch App</Button>
+                    </a>
+                  </Link>
                 </div>
                 <div className={`${styles.mobileActions} ${isActiveMobile ? "active" : ""}`}>
                   <div className={`${styles.headerToggler}`}><MenuToggler isActiveMobile={isActiveMobile} setIsActiveMobile={() => setIsActiveMobile(!isActiveMobile)} /></div>
