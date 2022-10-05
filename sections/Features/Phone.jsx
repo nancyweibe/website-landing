@@ -15,18 +15,13 @@ let screen4Animation = null;
 
 const Phone = ({ step, isActive }) => {
 
-  const videoRef1 = useRef(null)
-  const videoRef2 = useRef(null)
-  const videoRef3 = useRef(null)
-  const videoRef4 = useRef(null)
-
   const screen1AnimationContainer = useRef(null);
   const screen2AnimationContainer = useRef(null);
   const screen3AnimationContainer = useRef(null);
   const screen4AnimationContainer = useRef(null);
 
   useEffect(() => {
-    if (!screen1Animation) {
+    if (!screen1AnimationContainer.current.querySelector("svg")) {
       screen1Animation = Lottie.loadAnimation({
         container: screen1AnimationContainer.current,
         renderer: 'svg',
@@ -36,7 +31,7 @@ const Phone = ({ step, isActive }) => {
         onSegmentStart: () => { console.log(1) }
       })
     }
-    if (!screen2Animation) {
+    if (!screen2AnimationContainer.current.querySelector("svg")) {
       screen2Animation = Lottie.loadAnimation({
         container: screen2AnimationContainer.current,
         renderer: 'svg',
@@ -46,7 +41,7 @@ const Phone = ({ step, isActive }) => {
         onSegmentStart: () => { console.log(1) }
       })
     }
-    if (!screen3Animation) {
+    if (!screen3AnimationContainer.current.querySelector("svg")) {
       screen3Animation = Lottie.loadAnimation({
         container: screen3AnimationContainer.current,
         renderer: 'svg',
@@ -56,7 +51,7 @@ const Phone = ({ step, isActive }) => {
         onSegmentStart: () => { console.log(1) }
       })
     }
-    if (!screen4Animation) {
+    if (!screen4AnimationContainer.current.querySelector("svg")) {
       screen4Animation = Lottie.loadAnimation({
         container: screen4AnimationContainer.current,
         renderer: 'svg',

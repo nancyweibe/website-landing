@@ -3,7 +3,7 @@ import styles from "./Features.module.scss"
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
 
-const Phone = ({ step, isActive, children, isHide }) => {
+const Phone = ({ step, isActive, children, isHide, isOverflow }) => {
 
 
   return (
@@ -16,7 +16,7 @@ const Phone = ({ step, isActive, children, isHide }) => {
           height={671}
         />
       </div>
-      <div className={`${styles.videoMobileContainer}`}>
+      <div className={`${styles.videoMobileContainer} ${isOverflow ? 'visible' : ''}`}>
         {children}
       </div>
     </div>

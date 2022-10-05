@@ -21,7 +21,7 @@ const FeatureMobile2 = ({ isActive }) => {
   const screen2AnimationContainer = useRef(null);
 
   useEffect(() => {
-    if (!screen2Animation) {
+    if (!screen2AnimationContainer.current.querySelector("svg")) {
       screen2Animation = Lottie.loadAnimation({
         container: screen2AnimationContainer.current,
         renderer: 'svg',
@@ -66,7 +66,7 @@ const FeatureMobile2 = ({ isActive }) => {
         <Container>
           <Col>
             <div className={`${styles.phoneM2} ${play3 ? 'play' : ''}`}>
-              <Phone isHide={true} isActive={play1}>
+              <Phone isHide={true} isOverflow isActive={play1}>
                 <div className={`${styles.phoneVideo2Mobile}`} ref={screen2AnimationContainer}></div>
               </Phone>
             </div>

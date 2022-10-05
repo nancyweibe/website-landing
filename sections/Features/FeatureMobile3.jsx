@@ -22,7 +22,7 @@ const FeatureMobile3 = ({ isActive }) => {
   const screen3AnimationContainer = useRef(null);
 
   useEffect(() => {
-    if (!screen3Animation) {
+    if (!screen3AnimationContainer.current.querySelector("svg")) {
       screen3Animation = Lottie.loadAnimation({
         container: screen3AnimationContainer.current,
         renderer: 'svg',
