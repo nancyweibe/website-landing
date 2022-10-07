@@ -12,6 +12,11 @@ import FeatureMobile1 from "../sections/Features/FeatureMobile1";
 import FeatureMobile2 from "../sections/Features/FeatureMobile2";
 import FeatureMobile3 from "../sections/Features/FeatureMobile3";
 import FeatureMobile4 from "../sections/Features/FeatureMobile4";
+import FeatureTitle from "../sections/Features/FeatureTitle";
+import Feature1 from "../sections/Features/Feature1";
+import Feature2 from "../sections/Features/Feature2";
+import Feature3 from "../sections/Features/Feature3";
+import Feature4 from "../sections/Features/Feature4";
 
 export default function Home() {
 
@@ -21,11 +26,6 @@ export default function Home() {
 
   useEffect(() => {
     setW(window)
-
-    document.body.classList.add("full-scroll")
-
-    return () => document.body.classList.remove("full-scroll")
-
   }, [])
 
   useEffect(() => {
@@ -36,10 +36,17 @@ export default function Home() {
   }, [w])
 
   useEffect(() => {
-    const Splitting = require('splitting');
-    Splitting({ by: "chars" });
-    setW(window)
-  }, [])
+    if (swiper && window.innerWidth < 991 && swiper.__swiper__) swiper.destroy();
+  }, [swiper])
+
+  const options = useMemo(() => (
+    {
+      direction: 'vertical',
+      modules: [Navigation, Pagination, Mousewheel],
+      mousewheel: true,
+      speed: 1000,
+    }
+  ))
 
   return (
     <>
@@ -49,13 +56,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <VisibilitySensor minTopValue={100} partialVisibility={true}>
-        {({ isVisible }) =>
-          <Hero isActive={isVisible} />
-        }
-      </VisibilitySensor>
       {w?.innerWidth < 991 ?
         <>
+          <VisibilitySensor minTopValue={100} partialVisibility={true}>
+            {({ isVisible }) =>
+              <Hero isActive={isVisible} />
+            }
+          </VisibilitySensor>
           <VisibilitySensor minTopValue={100} partialVisibility={true}>
             {({ isVisible }) => <FeatureMobileTitle isActive={isVisible} />
             }
@@ -76,21 +83,53 @@ export default function Home() {
             {({ isVisible }) => <FeatureMobile4 isActive={isVisible} />
             }
           </VisibilitySensor>
-        </>
-        :
-        <>
           <VisibilitySensor minTopValue={100} partialVisibility={true}>
             {({ isVisible }) =>
-              <Features setCanSlide={setCanSlide} isActive={isVisible} offsetTop={w?.innerHeight} offsetBottom={w?.innerHeight} />
+              <Join isActive={isVisible} />
             }
           </VisibilitySensor>
         </>
+        :
+        <>
+          <Swiper onSwiper={setSwiper} {...options}>
+            <SwiperSlide>
+              {({ isActive }) => (
+                <Hero isActive={isActive} />
+              )}
+            </SwiperSlide>
+            <SwiperSlide>
+              {({ isActive }) => (
+                <FeatureTitle isActive={isActive} />
+              )}
+            </SwiperSlide>
+            <SwiperSlide>
+              {({ isActive }) => (
+                <Feature1 isActive={isActive} />
+              )}
+            </SwiperSlide>
+            <SwiperSlide>
+              {({ isActive }) => (
+                <Feature2 isActive={isActive} />
+              )}
+            </SwiperSlide>
+            <SwiperSlide>
+              {({ isActive }) => (
+                <Feature3 isActive={isActive} />
+              )}
+            </SwiperSlide>
+            <SwiperSlide>
+              {({ isActive }) => (
+                <Feature4 isActive={isActive} />
+              )}
+            </SwiperSlide>
+            <SwiperSlide>
+              {({ isActive }) => (
+                <Join isActive={isActive} />
+              )}
+            </SwiperSlide>
+          </Swiper>
+        </>
       }
-      <VisibilitySensor minTopValue={100} partialVisibility={true}>
-        {({ isVisible }) =>
-          <Join isActive={isVisible} />
-        }
-      </VisibilitySensor>
     </>
   )
 }
