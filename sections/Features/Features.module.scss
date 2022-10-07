@@ -348,7 +348,7 @@
 
 .phone3 {
   position: relative;
-  transform: translateX(150px) translateY(300px);
+  transform: translateX(150px);
   animation: floatP3 4s ease-in-out infinite;
 }
 
@@ -869,25 +869,25 @@
 
 @keyframes floatP3 {
   0% {
-    transform: translatey(0px) translateX(150px) translateY(300px);
+    transform: translatey(0px) translateX(150px);
   }
   50% {
-    transform: translatey(-30px) translateX(150px) translateY(300px);
+    transform: translatey(-30px) translateX(150px);
   }
   100% {
-    transform: translatey(0px) translateX(150px) translateY(300px);
+    transform: translatey(0px) translateX(150px);
   }
 }
 
 
 @keyframes floatP4 {
   0% {
-    transform: translatey(0px) translateX(-150px) rotate(15deg) translateY(130px);
+    transform: translatey(0px) translateX(-150px) rotate(15deg);
   }
   50% {
-    transform: translatey(-30px) translateX(-150px) rotate(15deg) translateY(130px);
+    transform: translatey(-30px) translateX(-150px) rotate(15deg);
   }
   100% {
-    transform: translatey(0px) translateX(-150px) rotate(15deg) translateY(130px);
+    transform: translatey(0px) translateX(-150px) rotate(15deg);
   }
 }
