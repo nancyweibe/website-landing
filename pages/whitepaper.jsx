@@ -6,6 +6,16 @@ import HeroWhitepaper from "../sections/HeroWhitepaper";
 import Join from "../sections/Join";
 import VisibilitySensor from '../utils/react-visibility-sensor'
 import { allowScroll } from "../utils"
+import TagManager from 'react-gtm-module'
+import appConfig from "../config"
+
+const tagManagerArgs = {
+  gtmId: appConfig.gtmId,
+  dataLayerName: appConfig.gtmDataLayerName,
+  dataLayer: {
+    page: 'Whitepaper'
+  },
+}
 
 export default function Whitepaper() {
 
@@ -13,6 +23,7 @@ export default function Whitepaper() {
   const [w, setW] = useState(null)
 
   useEffect(() => {
+    TagManager.dataLayer(tagManagerArgs)
     const Splitting = require('splitting');
     Splitting({ by: "chars" });
     setW(window)

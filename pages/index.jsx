@@ -17,6 +17,16 @@ import Feature1 from "../sections/Features/Feature1";
 import Feature2 from "../sections/Features/Feature2";
 import Feature3 from "../sections/Features/Feature3";
 import Feature4 from "../sections/Features/Feature4";
+import TagManager from 'react-gtm-module'
+import appConfig from "../config"
+
+const tagManagerArgs = {
+  gtmId: appConfig.gtmId,
+  dataLayerName: appConfig.gtmDataLayerName,
+  dataLayer: {
+    page: 'Home'
+  },
+}
 
 export default function Home() {
 
@@ -26,6 +36,7 @@ export default function Home() {
 
   useEffect(() => {
     setW(window)
+    TagManager.dataLayer(tagManagerArgs)
   }, [])
 
   useEffect(() => {

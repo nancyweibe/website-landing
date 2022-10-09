@@ -8,7 +8,13 @@ $entry-offset: 50%;
 .entry-d-3,
 .entry-d-4,
 .entry-d-5,
-.entry-d-6 {
+.entry-d-6,
+.entry-d-7,
+.entry-d-8,
+.entry-d-9,
+.entry-d-10,
+.entry-d-11,
+.entry-d-12 {
   transform: translateY(20px);
   opacity: 0;
 }
@@ -18,7 +24,13 @@ $entry-offset: 50%;
 .play .entry-d-3,
 .play .entry-d-4,
 .play .entry-d-5,
-.play .entry-d-6 {
+.play .entry-d-6,
+.play .entry-d-7,
+.play .entry-d-8,
+.play .entry-d-9,
+.play .entry-d-10,
+.play .entry-d-11,
+.play .entry-d-12 {
   transition: transform $entry-transition cubic-bezier(.25,.75,.5,1.25), opacity $entry-transition*2 ease;
   transform: translateY(0);
   opacity: 1;
@@ -41,6 +53,24 @@ $entry-offset: 50%;
 }
 .play .entry-d-6 {
   transition-delay: $entry-transition * 2.5;
+}
+.play .entry-d-7 {
+  transition-delay: $entry-transition * 3;
+}
+.play .entry-d-8 {
+  transition-delay: $entry-transition * 3.5;
+}
+.play .entry-d-9 {
+  transition-delay: $entry-transition * 4;
+}
+.play .entry-d-10 {
+  transition-delay: $entry-transition * 4.5;
+}
+.play .entry-d-11 {
+  transition-delay: $entry-transition * 5;
+}
+.play .entry-d-12 {
+  transition-delay: $entry-transition * 5.5;
 }
 
 .entry-s-1,

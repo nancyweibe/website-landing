@@ -8,6 +8,12 @@ import styles from "./Page.module.scss";
 import AnimatedBg from "../components/AnimatedBg";
 import { useRouter } from "next/router";
 import Loader from '../components/Loader'
+import TagManager from 'react-gtm-module'
+import appConfig from "../config"
+
+const tagManagerArgs = {
+  gtmId: appConfig.gtmId,
+}
 
 function App({ Component, pageProps }) {
 
@@ -24,6 +30,9 @@ function App({ Component, pageProps }) {
   };
 
   useEffect(() => {
+
+    TagManager.initialize(tagManagerArgs)
+
     router.events.on("routeChangeStart", start);
     router.events.on("routeChangeComplete", end);
     router.events.on("routeChangeError", end);

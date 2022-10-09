@@ -12,7 +12,7 @@ const team = [
   },
   {
     name: "Bob Carroll",
-    role: "Technical Cofounder",
+    role: "Co-Founder",
     image: "bob-carroll.png"
   },
   {
@@ -24,46 +24,6 @@ const team = [
     name: "Drew Ingram",
     role: "Co-Founder and CFO",
     image: "drew-ingram.png"
-  },
-  {
-    name: "Shane Herbert",
-    role: "Dev Team",
-    image: "shane-herbert.png"
-  },
-  {
-    name: "Ramsey Carroll",
-    role: "Dev Team",
-    image: "ramsey-carroll.png"
-  },
-  {
-    name: "Jeremiah Lachica",
-    role: "Dev Team",
-    image: "jeremiah-lachica.png"
-  },
-  {
-    name: "John Michael Doroy",
-    role: "Dev Team",
-    image: "john-michael-doroy.png"
-  },
-  {
-    name: "JM SANTOS",
-    role: "Dev Team",
-    image: "JM-SANTOS.png"
-  },
-  {
-    name: "Norman Li",
-    role: "Dev Team",
-    image: "norman-li.png"
-  },
-  {
-    name: "Connor Hammond",
-    role: "Dev Team",
-    image: "connor-hammond.png"
-  },
-  {
-    name: "Caleb Strong",
-    role: "Dev Team",
-    image: "caleb-strong.png"
   },
   {
     name: "Jay Rifkin",
@@ -119,6 +79,46 @@ const team = [
     name: "CryptoGambit",
     role: "Advisor",
     image: "CryptoGambit.png"
+  },
+  {
+    name: "Shane Herbert",
+    role: "Dev Team",
+    image: "shane-herbert.png"
+  },
+  {
+    name: "Ramsey Carroll",
+    role: "Dev Team",
+    image: "ramsey-carroll.png"
+  },
+  {
+    name: "Jeremiah Lachica",
+    role: "Dev Team",
+    image: "jeremiah-lachica.png"
+  },
+  {
+    name: "John Michael Doroy",
+    role: "Dev Team",
+    image: "john-michael-doroy.png"
+  },
+  {
+    name: "JM SANTOS",
+    role: "Dev Team",
+    image: "JM-SANTOS.png"
+  },
+  {
+    name: "Norman Li",
+    role: "Dev Team",
+    image: "norman-li.png"
+  },
+  {
+    name: "Connor Hammond",
+    role: "Dev Team",
+    image: "connor-hammond.png"
+  },
+  {
+    name: "Caleb Strong",
+    role: "Dev Team",
+    image: "caleb-strong.png"
   },
 ]
 
