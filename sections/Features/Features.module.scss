@@ -319,8 +319,18 @@
   overflow: hidden;
   position: relative;
 
+  svg {
+    border-radius: 30px;
+    overflow: hidden;
+  }
+
   &:global(.visible) {
     overflow: visible;
+
+    svg {
+      border-radius: 30px;
+      overflow: visible;
+    }
   }
 }
 
